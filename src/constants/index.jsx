@@ -112,19 +112,19 @@ export const EXPERIENCES = [
 export const SOCIAL_MEDIA_LINKS = [
   {
     href: "https://x.com/",
-    icon: <FaDiscord fontSize={26} className="hover:opacity-80" />,
+    icon: <FaDiscord size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
   },
   {
     href: "https://www.instagram.com/_.parth._19?igsh=MXJmMWZ6ZXEwcWZ1Mw==",
-    icon: <FaInstagram fontSize={26} className="hover:opacity-80" />,
+    icon: <FaInstagram size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
   },
   {
     href: "https://github.com/Parthsingh14",
-    icon: <FaGithub fontSize={26} className="hover:opacity-80" />,
+    icon: <FaGithub size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
   },
   {
     href: "https://www.linkedin.com/in/parth-singh-5797a424a",
-    icon: <FaLinkedin fontSize={26} className="hover:opacity-80" />,
+    icon: <FaLinkedin size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
   },
 ];
 

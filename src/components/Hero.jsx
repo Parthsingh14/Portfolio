@@ -1,5 +1,6 @@
 import { LuImport } from "react-icons/lu"
 import benson from "../assets/benson.webp"
+import parth from "../assets/Parthpic2.jpg"
 import { AnimatePresence,motion } from "motion/react";
 import FloatingIcons from "./FloatingIcons";
 

@@ -7,7 +7,7 @@ function Contact() {
     return (
         <div className="relative">
             <FloatingIcons />
-            <section id="contact" className="lg:h-screen ralative">
+            <section id="contact" className="lg:h-screen relative">
                 <div className="mx-auto max-w-6xl">
                     <motion.p 
                       transition={{ duration: 0.5, }}
@@ -39,9 +39,9 @@ function Contact() {
                         {CONTACT.phone}
                     </motion.p>
                 </div>
-                <div className="mt-20 flex items-center justify-center gap-8 lg:mt-1">
+                <div className="mt-20 z-50 flex items-center justify-center gap-8  lg:mt-1">
                     {SOCIAL_MEDIA_LINKS.map((link,index)=>(
-                        <a id={index} href={link.href} target="_blank" rel="noopener noreferrer">{link.icon}</a>
+                        <a className="text-3xl text-gray-400 transition duration-300 hover:text-lime-300 hover:opacity-80" key={index} href={link.href} target="_blank" rel="noopener noreferrer">{link.icon}</a>
                     ))}
                 </div>
                 <p className="my-8 text-center text-gray-400">&copy; parthSingh. All rights reserved.</p>
