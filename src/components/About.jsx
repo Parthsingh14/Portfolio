@@ -1,11 +1,13 @@
 import { ABOUT } from "../constants"
 import { AnimatePresence,motion } from "motion/react";
+import FloatingIcons from "./FloatingIcons"
 
 
 function About() {
     return (
-        <div>
-            <section id="about" className="lg:h-screen lg:mt-20">
+        <div className="relative">
+            <FloatingIcons/>
+            <section id="about" className="relative lg:h-screen lg:mt-20">
                 <motion.h2
                 transition={{ duration: 0.5, }}
                 whileHover={{ textShadow: "0px 0px 15px rgba(163,230,53,1)" }}

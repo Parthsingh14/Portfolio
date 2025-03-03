@@ -3,6 +3,7 @@ import { useState } from "react"
 import { FaTimes, FaBars } from "react-icons/fa";
 import { LINKS } from "../constants/index"
 import { AnimatePresence,motion } from "motion/react";
+import FloatingIcons from "./FloatingIcons"
 function Navbar() {
 
 
@@ -37,7 +38,7 @@ function Navbar() {
 
 
     return (
-        <>
+        <div>
           <nav className="fixed right-0 top-0 z-30 p-4">
             <button onClick={toggleMenu} className="rounded-md p-2" >
                 {isOpen ? (
@@ -73,7 +74,7 @@ function Navbar() {
 
           </AnimatePresence>
             
-        </>
+        </div>
     )
 }
 

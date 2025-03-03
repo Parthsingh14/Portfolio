@@ -1,12 +1,13 @@
 import { CONTACT,SOCIAL_MEDIA_LINKS } from "../constants"
 import { AnimatePresence,motion } from "motion/react";
-
+import FloatingIcons from "./FloatingIcons"
 
 
 function Contact() {
     return (
-        <div>
-            <section id="contact" className="lg:h-screen">
+        <div className="relative">
+            <FloatingIcons />
+            <section id="contact" className="lg:h-screen ralative">
                 <div className="mx-auto max-w-6xl">
                     <motion.p 
                       transition={{ duration: 0.5, }}

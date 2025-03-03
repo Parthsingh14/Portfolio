@@ -1,10 +1,12 @@
 import { PROJECTS } from "../constants"
 import {motion} from "motion/react"
+import FloatingIcons from "./FloatingIcons"
 
 function Projects() {
     return (
-        <div>
-            <section className="p-8" id="projects">
+        <div className="relative">
+            <FloatingIcons />
+            <section className="p-8 relative" id="projects">
                 <motion.h2
                   transition={{ duration: 0.5, }}
                   whileHover={{ textShadow: "0px 0px 15px rgba(163,230,53,1)" }}
