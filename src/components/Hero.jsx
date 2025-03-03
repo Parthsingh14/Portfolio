@@ -1,6 +1,6 @@
 import { LuImport } from "react-icons/lu"
 import benson from "../assets/benson.webp"
-import parth from "../assets/Parthpic2.jpg"
+import parth from "../assets/Parthpic8.jpg"
 import { AnimatePresence,motion } from "motion/react";
 import FloatingIcons from "./FloatingIcons";
 
@@ -58,7 +58,7 @@ function Hero() {
                     animate={{ opacity: 1, y:0}}
                     transition={{duration:0.5, delay:2}}
                     className="w-full">
-                        <img src={benson} alt="Parth Singh" className="mt-8 h-96 w-full object-cover"/>
+                        <img src={parth} alt="Parth Singh" className="mt-8 h-96 w-full object-cover"/>
                     </motion.div>
                 </div>
             </section>
