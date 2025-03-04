@@ -9,7 +9,7 @@ import project1 from "../assets/project1.webp";
 import project2 from "../assets/project2.webp";
 import project3 from "../assets/project3.webp";
 import project4 from "../assets/project4.webp";
-import project5 from "../assets/project5.webp";
+//import project5 from "../assets/project5.webp";
 import project6 from "../assets/project6.webp";
 import project7 from "../assets/project7.webp";
 import project8 from "../assets/project8.webp";
@@ -32,15 +32,15 @@ export const PROJECTS = [
     description:
       "A full-featured e-commerce website built with React and Node.js.",
     imgSrc: project1,
-    link: "https://example.com/ecommerce-website",
+    link: "https://github.com/Parthsingh14/UBER-Clone.git",
   },
   {
     id: 2,
     title: "AI-Code Rev",
     description:
-      "A social media application with real-time chat and notifications.",
+      "AI CodeRev is an AI-powered code review tool that analyzes and provides insights on code quality, best practices, and optimizations.",
     imgSrc: project2,
-    link: "https://example.com/social-media-app",
+    link: "https://ai-code-reviewer-frontend.onrender.com/",
   },
   {
     id: 3,
@@ -48,44 +48,44 @@ export const PROJECTS = [
     description:
       "A personal portfolio website to showcase projects and skills.",
     imgSrc: project3,
-    link: "https://example.com/portfolio-website",
+    link: "https://parthcodes.netlify.app",
   },
   {
     id: 4,
     title: "Quick-Shop",
     description:
-      "A blogging platform with user authentication and content management.",
+      "It's a dynamic e-commerce platform featuring advanced product search, filtering, and seamless user experience.",
     imgSrc: project4,
-    link: "https://example.com/blog-platform",
+    link: "https://quick-sho.netlify.app/",
   },
-  {
-    id: 5,
-    title: "Password-Manager",
-    description: "A task management tool to organize and prioritize work.",
-    imgSrc: project5,
-    link: "https://example.com/task-management-tool",
-  },
+  // {
+  //   id: 5,
+  //   title: "Password-Manager",
+  //   description: "A task management tool to organize and prioritize work.",
+  //   imgSrc: project5,
+  //   link: "https://example.com/task-management-tool",
+  // },
   {
     id: 6,
     title: "Message-Encryption-Decryption",
     description:
-      "An online learning platform offering various courses and resources.",
+      "It's a secure tool that converts text into emojis for encryption and decrypts them back to text using ASCII values.",
     imgSrc: project6,
-    link: "https://example.com/online-learning-platform",
+    link: "https://parthsingh14.github.io/Message-Encryption--Decryption/",
   },
   {
     id: 7,
     title: "Drum-kit-website",
-    description: "A mobile application to track fitness activities and goals.",
+    description: "It's an interactive web app that lets users play drum sounds using keyboard keys or mouse clicks.",
     imgSrc: project7,
-    link: "https://example.com/fitness-tracker",
+    link: "https://parthsingh14.github.io/Drum-kit-website/",
   },
   {
     id: 8,
     title: "Quiz-game",
-    description: "An app for browsing and saving various cooking recipes.",
+    description: "it's a fun and interactive web app that tests users' knowledge with multiple-choice questions and real-time score tracking.",
     imgSrc: project8,
-    link: "https://example.com/recipe-app",
+    link: "https://parthsingh14.github.io/Quiz-game.github.io/",
   },
 ];
 

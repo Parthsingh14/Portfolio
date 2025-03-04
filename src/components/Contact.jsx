@@ -23,7 +23,7 @@ function Contact() {
                         Contact Now !!!
                     </motion.p>
 
-                    <p className="p-4 text-center text-3xl md:text-4xl lg:text-5xl">{CONTACT.text}</p>
+                    <p className="p-4 text-center text-xl md:text-4xl lg:text-5xl">{CONTACT.text}</p>
 
                     <motion.p
                       transition={{ duration: 0.5, }}

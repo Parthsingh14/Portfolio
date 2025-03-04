@@ -58,7 +58,7 @@ function Hero() {
                     animate={{ opacity: 1, y:0}}
                     transition={{duration:0.5, delay:2}}
                     className="w-full">
-                        <img src={parth} alt="Parth Singh" className="mt-8 h-96 w-full object-cover lg:object-[0px_-8em]"/>
+                        <img src={parth} alt="Parth Singh" className="mt-8 h-96 sm:h-screen w-full object-cover lg:object-[0px_-8em]"/>
                     </motion.div>
                 </div>
             </section>
