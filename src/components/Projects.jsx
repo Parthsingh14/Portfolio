@@ -21,7 +21,7 @@ function Projects() {
                                 <img src={project.imgSrc} alt={project.title} className="h-auto w-full object-cover" />
                                 <div className="h-auto md:h-auto lg:h-auto w-full  absolute  bottom-2 left-2 right-1 text-white backdrop-blur-md">
                                     <h3 className="text-[12px] md:text-3xl lg:text-3xl mb-1 underline">{project.title}</h3>
-                                    <p className="text-[10px] md:text-lg lg:text-lg">{project.description}</p>
+                                    <p className="text-[10px] md:text-lg lg:text-lg ">{project.description}</p>
                                 </div>
                             </div>
                         </a>

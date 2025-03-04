@@ -6,3 +6,12 @@
     background-color: #000000;
     scroll-behavior: smooth;
 }
+#about-span span {
+    color: #ccffcc; /* Very light lime */
+    transition: color 0.1s, font-weight 0.3s;
+}
+
+#about-span span:hover {
+    color: #99ff99; /* Slightly darker lime */
+    font-weight: 200;
+}

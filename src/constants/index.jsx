@@ -30,7 +30,7 @@ export const PROJECTS = [
     id: 1,
     title: "Uber-Clone",
     description:
-      "A full-featured e-commerce website built with React and Node.js.",
+      "Building a ride-booking platform with the MERN stack, integrating real-time location tracking, fare calculation, and user authentication.",
     imgSrc: project1,
     link: "https://github.com/Parthsingh14/UBER-Clone.git",
   },

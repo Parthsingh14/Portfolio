@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaJs, FaDatabase, FaHtml5, FaCss3Alt, FaGitAlt } from "react-icons/fa";
+import { DiJava } from "react-icons/di";
+import { DiCode } from "react-icons/di";
 
 const FloatingIcons = () => {
   const icons = [
@@ -10,6 +12,9 @@ const FloatingIcons = () => {
     { Component: FaHtml5, size: 50 },
     { Component: FaCss3Alt, size: 50 },
     { Component: FaGitAlt, size: 50 },
+    { Component: DiJava, size: 60 },
+    { Component: DiCode, size: 60 },
+    
   ];
 
   return (
@@ -31,12 +36,12 @@ const FloatingIcons = () => {
             animate={{
               y: [randomY, randomY + 20, randomY],
               x: [randomX, randomX + 20, randomX],
-              opacity: 0.2,
+              opacity: 0.3,
             }}
             transition={{
               duration,
               repeat: Infinity,
-              repeatType: "reverse",
+              repeatType: "loop",
               ease: "easeInOut",
             }}
           >
