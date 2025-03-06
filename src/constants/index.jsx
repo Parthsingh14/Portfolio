@@ -71,7 +71,7 @@ export const PROJECTS = [
     description:
       "It's a secure tool that converts text into emojis for encryption and decrypts them back to text using ASCII values.",
     imgSrc: project6,
-    link: "https://parthsingh14.github.io/Message-Encryption--Decryption/",
+    link: "https://parthsingh14.github.io/Text-to-Emoji/",
   },
   {
     id: 7,
