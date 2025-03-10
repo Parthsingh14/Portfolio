@@ -48,7 +48,7 @@ function Hero() {
             className="mt-8"
           >
             <a
-              href="/Parth_Singh_Resume.pdf"
+              href="/Parth_Singh Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download
