@@ -4,6 +4,9 @@ import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import About from "./components/About";
 import Work from "./components/Work";
+import Education from "./components/Education";
+import Experience from "./components/Experience";
+import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import FloatingIcons from "./components/FloatingIcons";
 import { AnimatePresence,motion } from "motion/react";
@@ -18,6 +21,9 @@ function App() {
         <Marquee/>
         <Projects/>
         <About/>
+        <Education/>  {/* New */}
+        <Experience/> {/* New */}
+        <Skills/> 
         {/* <Work/> */}
         <Contact/>
       </main>
