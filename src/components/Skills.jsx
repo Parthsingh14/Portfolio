@@ -4,9 +4,16 @@ import FloatingIcons from "./FloatingIcons";
 
 const skillsData = {
   "Frontend": ["React", "Next.js", "HTML5", "CSS3", "Tailwind", "Framer Motion"],
-  "Backend": ["Node.js", "Express", "MongoDB", "SQL", "REST APIs"],
-  "Languages": ["JavaScript", "Java", "Python", "C++"],
-  "Tools": ["Git", "Postman", "VS Code", "Figma", "Linux"]
+  "Backend": ["Node.js", "Express", "MongoDB", "SQL", "REST APIs", "FastAPI", "WebSockets"],
+  "Database & ORM": [
+    "MongoDB",
+    "PostgreSQL",
+    "MySQL",
+    "SQLAlchemy",
+    "Mongoose",
+  ],
+  "Languages": ["JavaScript", "Java", "Python"],
+  "Tools": ["Git", "Postman", "VS Code", "Figma", "Docker"]
 };
 
 function Skills() {
