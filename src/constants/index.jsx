@@ -1,7 +1,6 @@
 import {
   FaGithub,
   FaLinkedin,
-  FaDiscord,
   FaInstagram,
 } from "react-icons/fa6";
 
@@ -56,7 +55,7 @@ export const PROJECTS = [
     description:
       "It's a dynamic e-commerce platform featuring advanced product search, filtering, and seamless user experience.",
     imgSrc: project4,
-    link: "https://quick-sho.netlify.app/",
+    link: "https://quickk-shop.netlify.app/",
   },
   // {
   //   id: 5,
@@ -110,10 +109,6 @@ export const EXPERIENCES = [
 ];
 
 export const SOCIAL_MEDIA_LINKS = [
-  {
-    href: "https://x.com/",
-    icon: <FaDiscord size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
-  },
   {
     href: "https://www.instagram.com/_.parth._19?igsh=MXJmMWZ6ZXEwcWZ1Mw==",
     icon: <FaInstagram size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,

@@ -1,81 +1,113 @@
-import { useEffect } from "react";
-import { useState } from "react"
+import { useEffect, useState } from "react";
 import { FaTimes, FaBars } from "react-icons/fa";
-import { LINKS } from "../constants/index"
-import { AnimatePresence,motion } from "motion/react";
-import FloatingIcons from "./FloatingIcons"
+import { LINKS } from "../constants";
+import { AnimatePresence, motion } from "framer-motion"; // Changed from "motion/react"
+import FloatingIcons from "./FloatingIcons";
+
 function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
-
-    const [isOpen,setIsOpen] = useState(false);
-
-    const toggleMenu = () =>{
+    const toggleMenu = () => {
         setIsOpen(!isOpen);
-    }
+    };
 
-    useEffect(()=>{
-        if(isOpen){
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+
+        if (isOpen) {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "auto";
         }
-    },[isOpen])
 
-    const containerVarients = {
-        hidden: {opacity:0, y: "-100%"},
-        visible: {opacity:1, y:0,
-            transition:{
-                staggerChildren: 0.1
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            document.body.style.overflow = "auto"; // Cleanup
+        };
+    }, [isOpen]);
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                when: "beforeChildren"
+            }
+        },
+        exit: {
+            opacity: 0,
+            transition: {
+                staggerChildren: 0.05,
+                staggerDirection: -1
             }
         }
-    }
+    };
 
-    const linkVarients = {
-        hidden: {opacity:0, y: "-50"},
-        visible: {opacity:1, y:0}
-    }
-
-
+    const linkVariants = {
+        hidden: { opacity: 0, y: -10 },
+        visible: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -10 }
+    };
 
     return (
-        <div>
-          <nav className="fixed right-0 top-0 z-30 p-4">
-            <button onClick={toggleMenu} className="rounded-md p-2" >
-                {isOpen ? (
-                    <FaTimes className="h-6 w-6"></FaTimes> 
-                ) : (
-                    <FaBars className="h-6 w-6"></FaBars>
-                )}
-            </button>
-          </nav>
+        <>
+            <FloatingIcons />
+            <nav className={`fixed w-full top-0 z-50 flex justify-end p-4 transition-all duration-300 ${isScrolled ? "backdrop-blur-sm bg-black/50" : ""}`}>
+                <motion.button
+                    onClick={toggleMenu}
+                    className="p-2 rounded-md focus:outline-none z-50"
+                    whileTap={{ scale: 0.9 }}
+                    aria-label="Menu"
+                >
+                    {isOpen ? (
+                        <FaTimes className="h-6 w-6 text-lime-300" />
+                    ) : (
+                        <FaBars className="h-6 w-6 text-white hover:text-lime-300 transition-colors" />
+                    )}
+                </motion.button>
 
-          <AnimatePresence>
-
-          {isOpen && (
-            <motion.div 
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={containerVarients}
-            className="fixed inset-0 z-20 flex flex-col items-center justify-center bg-black text-white">
-                <ul className="space-y-6 text-3xl">
-                    {LINKS.map((link)=> (
-                        <motion.li 
-                        variants={linkVarients}
-                        key={link.id}>
-                            <a href={`#${link.id}`} onClick={toggleMenu} className="text-5xl font-semibold uppercase tracking-wide hover:text-lime-300 lg:text9xl">
-                                {link.name}
-                            </a>
-                        </motion.li>
-                    ))}
-                </ul>
-            </motion.div>
-          )}
-
-          </AnimatePresence>
-            
-        </div>
-    )
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            key="menu"
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            variants={containerVariants}
+                            className="fixed inset-0 flex flex-col items-center justify-center bg-black/95 backdrop-blur-sm z-40"
+                        >
+                            <ul className="space-y-8 text-center">
+                                {LINKS.map((link) => (
+                                    <motion.li
+                                        key={link.id}
+                                        variants={linkVariants}
+                                        whileHover={{ 
+                                            scale: 1.05,
+                                            color: "rgb(163, 230, 53)"
+                                        }}
+                                        whileTap={{ scale: 0.95 }}
+                                    >
+                                        <a
+                                            href={`#${link.id}`}
+                                            onClick={toggleMenu}
+                                            className="block text-4xl md:text-5xl font-medium uppercase tracking-wide text-white hover:text-lime-300 px-4 py-2 transition-colors"
+                                        >
+                                            {link.name}
+                                        </a>
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </nav>
+        </>
+    );
 }
 
-export default Navbar
+export default Navbar;

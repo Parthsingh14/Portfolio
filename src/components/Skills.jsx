@@ -12,7 +12,7 @@ const skillsData = {
 function Skills() {
   return (
     <div className="relative">
-      <FloatingIcons />
+      {/* <FloatingIcons /> */}
       <section id="skills" className="relative py-20">
         <motion.h2
           whileHover={{ textShadow: "0px 0px 15px rgba(163,230,53,1)" }}

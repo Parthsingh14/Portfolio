@@ -16,16 +16,14 @@ function App() {
     <div className="relative">
       <FloatingIcons />
       <main className="relative font-light text-white antialiased selection:bg-lime-300 selection:text-black">
-        <Navbar/>
-        <Hero/>
-        <Marquee/>
-        <Projects/>
-        <About/>
-        <Education/>  {/* New */}
-        <Experience/> {/* New */}
-        <Skills/> 
-        {/* <Work/> */}
-        <Contact/>
+        <Navbar />
+        <Hero />         {/* Name + Intro */}
+        <About />        {/* Personal background */}
+        <Skills />       {/* Interactive skills showcase */}
+        <Projects />     {/* Portfolio work */}
+        <Experience />   {/* Work history */}
+        <Education />    {/* Academic background */}
+        <Contact /> 
       </main>
     </div>
   )
