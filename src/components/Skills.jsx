@@ -3,17 +3,47 @@ import { motion } from "framer-motion";
 import FloatingIcons from "./FloatingIcons";
 
 const skillsData = {
-  "Frontend": ["React", "Next.js", "HTML5", "CSS3", "Tailwind", "Framer Motion"],
-  "Backend": ["Node.js", "Express", "MongoDB", "SQL", "REST APIs", "FastAPI", "WebSockets"],
+  Frontend: [
+    "React.js",
+    "Next.js",
+    "Redux Toolkit",
+    "Vite.js",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Framer Motion",
+  ],
+  Backend: [
+    "Node.js",
+    "Express.js",
+    "FastAPI",
+    "REST APIs",
+    "WebSockets",
+    "AI Integrations",
+  ],
   "Database & ORM": [
     "MongoDB",
     "PostgreSQL",
     "MySQL",
-    "SQLAlchemy",
     "Mongoose",
+    "SQLAlchemy",
+    "Redis (Caching)",
   ],
-  "Languages": ["JavaScript", "Java", "Python"],
-  "Tools": ["Git", "Postman", "VS Code", "Figma", "Docker"]
+  Languages: ["JavaScript", "TypeScript", "Java"],
+  "Tools & Platforms": [
+    "Git",
+    "GitHub",
+    "Postman",
+    "VS Code",
+    "Figma",
+    "Docker",
+  ],
+  "Other Skills": [
+    "Rate Limiting",
+    "System Design Basics",
+    "Deployment (Basic Docker & Cloud)",
+    "Prompt Engineering",
+  ],
 };
 
 function Skills() {
@@ -39,38 +69,39 @@ function Skills() {
               viewport={{ once: true }}
             >
               <div className="absolute inset-0 rounded-full border border-lime-300/30 flex items-center justify-center">
-                <motion.h3 
+                <motion.h3
                   className="text-xl text-lime-300 font-bold z-10 bg-black px-4"
                   whileHover={{ scale: 1.1 }}
                 >
                   {category}
                 </motion.h3>
-                
+
                 {skills.map((skill, skillIndex) => {
-                  const angle = (skillIndex * (360 / skills.length)) * (Math.PI / 180);
+                  const angle =
+                    skillIndex * (360 / skills.length) * (Math.PI / 180);
                   const radius = 100;
                   const x = radius * Math.cos(angle);
                   const y = radius * Math.sin(angle);
-                  
+
                   return (
                     <motion.div
                       key={skill}
                       className="absolute text-sm bg-gray-800 border border-lime-300/30 rounded-full px-3 py-1 cursor-default"
                       initial={{ x: 0, y: 0, opacity: 0 }}
-                      whileInView={{ 
-                        x, 
-                        y, 
+                      whileInView={{
+                        x,
+                        y,
                         opacity: 1,
-                        transition: { 
+                        transition: {
                           delay: skillIndex * 0.05,
                           type: "spring",
-                          stiffness: 100
-                        }
+                          stiffness: 100,
+                        },
                       }}
                       whileHover={{
                         scale: 1.2,
                         backgroundColor: "rgba(163, 230, 53, 0.2)",
-                        transition: { duration: 0.2 }
+                        transition: { duration: 0.2 },
                       }}
                     >
                       {skill}
