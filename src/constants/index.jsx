@@ -89,7 +89,8 @@ export const PROJECTS = [
 ];
 
 export const ABOUT =
-  "As a dedicated Full Stack Developer, I specialize in creating dynamic and responsive web applications that provide seamless user experiences. With a strong foundation in both front-end and back-end technologies, I excel in building robust and scalable solutions. My expertise includes working with JavaScript frameworks such as React and Node.js, as well as proficiency in databases like MongoDB and SQL. I am passionate about continuous learning and keeping up-to-date with the latest industry trends, which allows me to implement modern practices and tools in my projects.";
+  "I am an AI-driven Full Stack Developer with a strong focus on building scalable, efficient, and user-friendly web applications. Skilled in both frontend and backend development, I work extensively with technologies like React, Next.js, Node.js, and Express, along with databases such as MongoDB, PostgreSQL, and MySQL. With hands-on experience in AI integrations and modern tools like Docker, Redis, and FastAPI, I bring innovation and adaptability to every project. Passionate about continuous growth, I thrive on learning emerging technologies and applying them to craft impactful digital solutions.";
+
 
 export const EXPERIENCES = [
   {
