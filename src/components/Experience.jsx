@@ -3,17 +3,17 @@ import { motion } from "framer-motion";
 import FloatingIcons from "./FloatingIcons";
 
 const experienceData = [
-  {
+ {
   id: 1,
-  role: "Frontend Lead (Full Stack Contributions)",
+  role: "Frontend & Backend Developer (Internship)",
   company: "Bytemasks",
-  period: "April 2025 - Present",
+  period: "April 2025 - July 2025",
   description: [
-    "Leading frontend development for an AI Security platform, architecting the main dashboard and AI visualization interfaces using React/TypeScript",
-    "Extended role to full stack development: Designing and building REST APIs with Python FastAPI, SQLAlchemy ORM, and PostgreSQL",
-    "Implementing Pydantic models for robust data validation and PGAdmin for database management",
-    "Optimizing performance of data-intensive AI visualizations through efficient state management and Web Workers",
-    "Collaborating with AI team to design intuitive interfaces for complex security analytics"
+    "Developed and optimized the UI for key projects: 'Monitor' (AI monitoring dashboard) and 'Safe AI' (multi-model AI chat platform) using Next.js and TypeScript.",
+    "Implemented new features such as Lab, Collaboration, Prompt Library, and enhanced dashboard components to improve user experience.",
+    "Contributed to backend development by creating and integrating REST API endpoints with Python FastAPI and PostgreSQL.",
+    "Worked on authentication, bookmarking, and sharing features, ensuring smooth API consumption on the frontend.",
+    "Collaborated with the team in an agile workflow, performing regular GitHub pushes, standups, and code reviews."
   ],
   type: "internship",
 },
