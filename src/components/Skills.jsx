@@ -41,7 +41,7 @@ const skillsData = {
   "Other Skills": [
     "Rate Limiting",
     "System Design Basics",
-    "Deployment (Basic Docker & Cloud)",
+    "Deployment",
     "Prompt Engineering",
   ],
 };
