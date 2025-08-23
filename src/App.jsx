@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
 import Navbar from "./components/Navbar";
@@ -10,22 +11,41 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import FloatingIcons from "./components/FloatingIcons";
 import { AnimatePresence,motion } from "motion/react";
+import UIPlayground from "./components/UIPlayground"; // new import
+import { useState } from "react";
 
 function App() {
+
+  const [isUIPlayground, setisUIPlayground] = useState(false)
+
+
   return (
-    <div className="relative">
-      <FloatingIcons />
-      <main className="relative font-light text-white antialiased selection:bg-lime-300 selection:text-black">
-        <Navbar />
-        <Hero />         {/* Name + Intro */}
-        <About />        {/* Personal background */}
-        <Skills />       {/* Interactive skills showcase */}
-        <Projects />     {/* Portfolio work */}
-        <Experience />   {/* Work history */}
-        <Education />    {/* Academic background */}
-        <Contact /> 
-      </main>
-    </div>
+    <BrowserRouter>
+      <div className="relative">
+        <FloatingIcons />
+        <main className="relative font-light text-white antialiased selection:bg-lime-300 selection:text-black">
+          <Navbar isUIPlayground={isUIPlayground} setisUIPlayground={setisUIPlayground} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero />
+                  <About />
+                  <Skills />
+                  <Projects />
+                  <Experience />
+                  <Education />
+                  <Contact />
+                </>
+              }
+            />
+            
+            <Route path="/ui-playground" element={<UIPlayground />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
