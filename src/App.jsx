@@ -10,7 +10,7 @@ import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import FloatingIcons from "./components/FloatingIcons";
-import { AnimatePresence,motion } from "motion/react";
+import { AnimatePresence,motion } from "framer-motion";
 import UIPlayground from "./components/UIPlayground"; // new import
 import { useState } from "react";
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="relative">
-        <FloatingIcons />
+        <FloatingIcons className="pointer-events-none" />
         <main className="relative font-light text-white antialiased selection:bg-lime-300 selection:text-black">
           <Navbar isUIPlayground={isUIPlayground} setisUIPlayground={setisUIPlayground} />
           <Routes>
@@ -41,7 +41,11 @@ function App() {
               }
             />
             
-            <Route path="/ui-playground" element={<UIPlayground />} />
+            <Route path="/ui-playground"  element={
+                <div className="relative z-50">
+                  <UIPlayground />
+                </div>
+              }  />
           </Routes>
         </main>
       </div>
