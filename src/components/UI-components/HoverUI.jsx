@@ -1,7 +1,7 @@
 function HoverUI() {
     return (
         <div>
-            hover
+            Comming soon: hover
         </div>
     )
 }

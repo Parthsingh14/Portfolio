@@ -27,6 +27,18 @@ const educationData = [
   }
 ];
 
+// Function to convert score → percentage number
+const getPercentage = (score) => {
+  if (score.includes("CGPA")) {
+    const value = parseFloat(score);
+    return Math.min(value * 10, 100); // CGPA * 10 = %
+  }
+  if (score.includes("%")) {
+    return Math.min(parseFloat(score), 100); // % as it is
+  }
+  return 0;
+};
+
 function Education() {
   const containerRef = useRef(null);
   const { scrollXProgress } = useScroll({
@@ -55,61 +67,21 @@ function Education() {
             className="flex overflow-x-auto snap-x snap-mandatory py-8 gap-6 no-scrollbar"
             style={{ scrollSnapType: "x mandatory" }}
           >
-            {educationData.map((edu, index) => (
-              <motion.div
-                key={edu.id}
-                className="flex-shrink-0 w-[85vw] snap-center bg-gray-900 p-6 rounded-xl border border-lime-300 shadow-lg shadow-lime-300/20"
-                style={{ scrollSnapAlign: "center" }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ 
-                  opacity: 1, 
-                  scale: 1,
-                  rotateY: index % 2 === 0 ? -5 : 5
-                }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-lime-300 text-xl font-bold">{edu.degree}</h3>
-                <p className="text-gray-300 mt-2">{edu.institution}</p>
-                <div className="mt-4 flex justify-between text-sm">
-                  <span className="text-lime-100">{edu.year}</span>
-                  <span className="bg-lime-300 text-black px-2 py-1 rounded">
-                    {edu.score}
-                  </span>
-                </div>
-                <div className="mt-4 h-1 bg-lime-300/30 w-full rounded-full">
-                  <motion.div 
-                    className="h-full bg-lime-300 rounded-full"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "100%" }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop (centered grid) */}
-        <div className="hidden lg:block">
-          <motion.div 
-            className="relative mx-auto max-w-6xl"
-            style={{ x: desktopOffset }}
-          >
-            <div className="grid grid-cols-3 gap-8 px-8">
-              {educationData.map((edu, index) => (
+            {educationData.map((edu, index) => {
+              const percentage = getPercentage(edu.score);
+              return (
                 <motion.div
                   key={edu.id}
-                  className="bg-gray-900 p-6 rounded-xl border border-lime-300 shadow-lg shadow-lime-300/20"
-                  initial={{ opacity: 0, y: 20 }}
+                  className="flex-shrink-0 w-[85vw] snap-center bg-gray-900 p-6 rounded-xl border border-lime-300 shadow-lg shadow-lime-300/20"
+                  style={{ scrollSnapAlign: "center" }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ 
                     opacity: 1, 
-                    y: 0,
-                    rotateY: index % 2 === 0 ? -10 : 10
+                    scale: 1,
+                    rotateY: index % 2 === 0 ? -5 : 5
                   }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, zIndex: 10 }}
+                  whileHover={{ scale: 1.02 }}
                   viewport={{ once: true }}
                 >
                   <h3 className="text-lime-300 text-xl font-bold">{edu.degree}</h3>
@@ -124,12 +96,58 @@ function Education() {
                     <motion.div 
                       className="h-full bg-lime-300 rounded-full"
                       initial={{ width: 0 }}
-                      whileInView={{ width: "100%" }}
+                      whileInView={{ width: `${percentage}%` }}
                       transition={{ duration: 1, delay: 0.5 }}
                     />
                   </div>
                 </motion.div>
-              ))}
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Desktop (centered grid) */}
+        <div className="hidden lg:block">
+          <motion.div 
+            className="relative mx-auto max-w-6xl"
+            style={{ x: desktopOffset }}
+          >
+            <div className="grid grid-cols-3 gap-8 px-8">
+              {educationData.map((edu, index) => {
+                const percentage = getPercentage(edu.score);
+                return (
+                  <motion.div
+                    key={edu.id}
+                    className="bg-gray-900 p-6 rounded-xl border border-lime-300 shadow-lg shadow-lime-300/20"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ 
+                      opacity: 1, 
+                      y: 0,
+                      rotateY: index % 2 === 0 ? -10 : 10
+                    }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05, zIndex: 10 }}
+                    viewport={{ once: true }}
+                  >
+                    <h3 className="text-lime-300 text-xl font-bold">{edu.degree}</h3>
+                    <p className="text-gray-300 mt-2">{edu.institution}</p>
+                    <div className="mt-4 flex justify-between text-sm">
+                      <span className="text-lime-100">{edu.year}</span>
+                      <span className="bg-lime-300 text-black px-2 py-1 rounded">
+                        {edu.score}
+                      </span>
+                    </div>
+                    <div className="mt-4 h-1 bg-lime-300/30 w-full rounded-full">
+                      <motion.div 
+                        className="h-full bg-lime-300 rounded-full"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${percentage}%` }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                      />
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>

@@ -1,7 +1,7 @@
 function LoadersUI() {
     return (
         <div>
-            Loader
+            Comming Soon: Loader
         </div>
     )
 }

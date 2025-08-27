@@ -1,7 +1,7 @@
 function NavbarUI() {
     return (
         <div>
-            navbar ui
+            Comming Soon: navbar ui
         </div>
     )
 }

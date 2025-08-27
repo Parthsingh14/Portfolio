@@ -1,7 +1,7 @@
 function CardsUI() {
     return (
         <div>
-            cards ui
+           Comming soon: cards ui
         </div>
     )
 }

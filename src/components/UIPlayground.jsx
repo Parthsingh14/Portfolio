@@ -1,12 +1,21 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Sparkles, Zap, Palette } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  Zap,
+  Palette,
+} from "lucide-react";
 import ButtonsUI from "./UI-components/ButtonsUI";
 import LoadersUI from "./UI-components/LoadersUI";
 import CardsUI from "./UI-components/CardsUI";
 import FormsUI from "./UI-components/FormsUI";
 import NavbarUI from "./UI-components/NavbarUI";
 import HoverUI from "./UI-components/HoverUI";
+import BadgesUI from "./UI-components/BadgesUI";
+import AvatarsUI from "./UI-components/AvatarUI";
+import AlertsUI from "./UI-components/AlertUI";
 
 function UIPlayground() {
   const uiTabs = [
@@ -16,9 +25,9 @@ function UIPlayground() {
     { name: "Forms", component: <FormsUI />, icon: "📝" },
     { name: "Navbar", component: <NavbarUI />, icon: "🧭" },
     { name: "Hover Effects", component: <HoverUI />, icon: "✨" },
-    { name: "More Coming Soon!", component: <div className="text-center text-gray-700">Stay Tuned!</div>, icon: "🚀" },
-    { name: "More Coming Soon!!", component: <div className="text-center text-gray-700">Stay Tuned!</div>, icon: "🔮" },
-    { name: "More Coming Soon!!!", component: <div className="text-center text-gray-700">Stay Tuned!</div>, icon: "🎨" },
+    { name: "Badges", component: <BadgesUI />, icon: "🏷️" },
+    { name: "Avatars", component: <AvatarsUI />, icon: "👤" },
+    { name: "Alerts", component: <AlertsUI />, icon: "⚡" },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -35,7 +44,7 @@ function UIPlayground() {
         left: direction === "left" ? -200 : 200,
         behavior: "smooth",
       });
-      
+
       // Reset scrolling state after animation completes
       setTimeout(() => setIsScrolling(false), 500);
     }
@@ -55,8 +64,12 @@ function UIPlayground() {
       const scrollPos = scrollRef.current.scrollLeft;
       const tabWidth = 150; // Approximate tab width
       const newIndex = Math.round(scrollPos / tabWidth);
-      
-      if (newIndex >= 0 && newIndex < uiTabs.length && newIndex !== activeIndex) {
+
+      if (
+        newIndex >= 0 &&
+        newIndex < uiTabs.length &&
+        newIndex !== activeIndex
+      ) {
         setActiveIndex(newIndex);
       }
     }
@@ -65,7 +78,7 @@ function UIPlayground() {
   return (
     <div className="flex flex-col items-center min-h-screen mt-10 lg:mt-15 px-4 py-8">
       {/* Header with decorative elements */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -75,10 +88,26 @@ function UIPlayground() {
           UI Playground
         </h1>
         <p className="text-gray-400 mt-2">Explore interactive UI components</p>
+
+        {/* Note Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
+          className="mt-4 p-3 rounded-xl border border-yellow-400 bg-yellow-100/20 text-yellow-300 text-sm md:text-base inline-block"
+        >
+          ⚠️ <span className="font-semibold">Note:</span>
+          These UIs are built only with{" "}
+          <span className="text-emerald-400 font-medium">
+            TailwindCSS
+          </span> +{" "}
+          <span className="text-lime-400 font-medium">Framer Motion</span>.
+          Please install them first.
+        </motion.div>
       </motion.div>
 
       {/* Tab Container */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
@@ -92,7 +121,11 @@ function UIPlayground() {
           disabled={activeIndex === 0}
           className="absolute left-0 z-10 h-full px-3 bg-gradient-to-r from-neutral-900 via-neutral-900 to-transparent flex items-center"
         >
-          <ChevronLeft className={`${activeIndex === 0 ? 'text-neutral-600' : 'text-white'}`} />
+          <ChevronLeft
+            className={`${
+              activeIndex === 0 ? "text-neutral-600" : "text-white"
+            }`}
+          />
         </motion.button>
 
         {/* Scrollable Tabs */}
@@ -104,7 +137,7 @@ function UIPlayground() {
           {uiTabs.map((tab, index) => (
             <motion.div
               key={tab.name + index}
-              ref={el => tabRefs.current[index] = el}
+              ref={(el) => (tabRefs.current[index] = el)}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
@@ -132,7 +165,13 @@ function UIPlayground() {
           disabled={activeIndex === uiTabs.length - 1}
           className="absolute right-0 z-10 h-full px-3 bg-gradient-to-l from-neutral-900 via-neutral-900 to-transparent flex items-center"
         >
-          <ChevronRight className={`${activeIndex === uiTabs.length - 1 ? 'text-neutral-600' : 'text-white'}`} />
+          <ChevronRight
+            className={`${
+              activeIndex === uiTabs.length - 1
+                ? "text-neutral-600"
+                : "text-white"
+            }`}
+          />
         </motion.button>
       </motion.div>
 
@@ -144,9 +183,9 @@ function UIPlayground() {
             initial={{ opacity: 0, y: 20, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.98 }}
-            transition={{ 
+            transition={{
               duration: 0.5,
-              ease: "easeOut"
+              ease: "easeOut",
             }}
             className="w-full bg-neutral-900 border border-neutral-800 rounded-2xl p-6 shadow-xl shadow-black/30"
           >
@@ -168,7 +207,7 @@ function UIPlayground() {
             key={index}
             onClick={() => setActiveIndex(index)}
             className={`w-2 h-2 rounded-full cursor-pointer ${
-              activeIndex === index ? 'bg-lime-400' : 'bg-neutral-700'
+              activeIndex === index ? "bg-lime-400" : "bg-neutral-700"
             }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
