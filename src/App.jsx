@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
 import Navbar from "./components/Navbar";
@@ -9,23 +10,46 @@ import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import FloatingIcons from "./components/FloatingIcons";
-import { AnimatePresence,motion } from "motion/react";
+import { AnimatePresence,motion } from "framer-motion";
+import UIPlayground from "./components/UIPlayground"; // new import
+import { useState } from "react";
 
 function App() {
+
+  const [isUIPlayground, setisUIPlayground] = useState(false)
+
+
   return (
-    <div className="relative">
-      <FloatingIcons />
-      <main className="relative font-light text-white antialiased selection:bg-lime-300 selection:text-black">
-        <Navbar />
-        <Hero />         {/* Name + Intro */}
-        <About />        {/* Personal background */}
-        <Skills />       {/* Interactive skills showcase */}
-        <Projects />     {/* Portfolio work */}
-        <Experience />   {/* Work history */}
-        <Education />    {/* Academic background */}
-        <Contact /> 
-      </main>
-    </div>
+    <BrowserRouter>
+      <div className="relative">
+        <FloatingIcons className="pointer-events-none" />
+        <main className="relative font-light text-white antialiased selection:bg-lime-300 selection:text-black">
+          <Navbar isUIPlayground={isUIPlayground} setisUIPlayground={setisUIPlayground} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero />
+                  <About />
+                  <Skills />
+                  <Projects />
+                  <Experience />
+                  <Education />
+                  <Contact />
+                </>
+              }
+            />
+            
+            <Route path="/ui-playground"  element={
+                <div className="relative z-50">
+                  <UIPlayground />
+                </div>
+              }  />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 

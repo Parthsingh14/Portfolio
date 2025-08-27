@@ -51,7 +51,7 @@ function About() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                As a dedicated <span className="text-lime-300 font-medium">Full Stack Developer</span>, I specialize in creating dynamic and responsive web applications that provide seamless user experiences. With expertise in both frontend and backend technologies, I build robust, scalable solutions using modern frameworks and architectures.
+              As a passionate <span className="text-lime-300 font-medium">AI-Full Stack Developer</span>, I craft intelligent and scalable web applications that seamlessly integrate artificial intelligence to enhance productivity and user experience. I focus on building modern, efficient solutions where AI is not just an add-on, but a core part of the architecture—enabling smarter workflows, automation, and innovation across projects.
               </motion.p>
               
               <motion.p
