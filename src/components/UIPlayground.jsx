@@ -176,7 +176,7 @@ function UIPlayground() {
       </motion.div>
 
       {/* Tab Content */}
-      <div className="w-full max-w-5xl rounded-2xl overflow-hidden">
+      <div className="w-full max-w-[100%] rounded-2xl overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
