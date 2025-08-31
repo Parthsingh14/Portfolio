@@ -1,8 +1,40 @@
+"use client";
 import { LuImport } from "react-icons/lu";
-//import benson from "../assets/benson.webp"
 import parth from "../assets/Parthpic8.jpg";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "framer-motion";
 import FloatingIcons from "./FloatingIcons";
+
+const flipperVariants = {
+  hidden: { rotateX: 90, opacity: 0 },
+  visible: (i) => ({
+    rotateX: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      delay: i * 0.15, // stagger each letter
+      ease: "easeOut",
+    },
+  }),
+};
+
+function FlipperText({ text }) {
+  return (
+    <div className="flex space-x-2 overflow-hidden">
+      {text.split("").map((letter, i) => (
+        <motion.span
+          key={i}
+          custom={i}
+          initial="hidden"
+          animate="visible"
+          variants={flipperVariants}
+          className="inline-block"
+        >
+          {letter}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
 
 function Hero() {
   return (
@@ -10,37 +42,17 @@ function Hero() {
       <FloatingIcons />
       <section className="relative" id="home">
         <div className="flex flex-col items-center justify-center">
-          <motion.h1
-            initial={{ opacity: 0, x: -150 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 2, ease: "anticipate", delay: 0.15 }}
-            drag
-            dragConstraints={{
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-            }}
-            className="mt-16 overflow-hidden text-[12vw] font-semibold uppercase leading-none"
-          >
-            Parth
-          </motion.h1>
-          <motion.h1
-            initial={{ opacity: 0, x: 150 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 2, ease: "anticipate", delay: 0.15 }}
-            drag
-            dragConstraints={{
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-            }}
-            className="overflow-hidden text-[12vw] font-semibold uppercase leading-none"
-          >
-            Singh
-          </motion.h1>
+          {/* First Name */}
+          <h1 className="mt-16 text-[12vw] font-semibold uppercase leading-none">
+            <FlipperText text="Parth" />
+          </h1>
 
+          {/* Last Name */}
+          <h1 className="text-[12vw] font-semibold uppercase leading-none">
+            <FlipperText text="Singh" />
+          </h1>
+
+          {/* Resume Button */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,6 +75,7 @@ function Hero() {
             </a>
           </motion.div>
 
+          {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
