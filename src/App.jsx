@@ -10,6 +10,7 @@ import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import FloatingIcons from "./components/FloatingIcons";
+import Practise from "./components/Practise";
 import { AnimatePresence,motion } from "framer-motion";
 import UIPlayground from "./components/UIPlayground"; // new import
 import { useState } from "react";
@@ -46,6 +47,12 @@ function App() {
                   <UIPlayground />
                 </div>
               }  />
+
+              <Route path="/practise" element={
+                <div className="relative z-50">
+                  <Practise />
+                </div>
+              } />
           </Routes>
         </main>
       </div>
