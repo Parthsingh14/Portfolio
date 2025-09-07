@@ -70,7 +70,7 @@ function Skills() {
             >
               <div className="absolute inset-0 rounded-full border border-lime-300/30 flex items-center justify-center">
                 <motion.h3
-                  className="text-xl text-lime-300 font-bold z-10 bg-black px-4"
+                  className="text-xl text-lime-300 font-bold z-10  px-4"
                   whileHover={{ scale: 1.1 }}
                 >
                   {category}

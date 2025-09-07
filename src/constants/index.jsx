@@ -4,15 +4,13 @@ import {
   FaInstagram,
 } from "react-icons/fa6";
 
-import project1 from "../assets/project1.webp";
-import project2 from "../assets/project2.webp";
-import project3 from "../assets/project3.webp";
-import project4 from "../assets/project4.webp";
-//import project5 from "../assets/project5.webp";
-import project6 from "../assets/project6.webp";
-import project7 from "../assets/project7.webp";
-import project8 from "../assets/project8.webp";
-//import project9 from "../assets/project9.webp";
+
+import CodeRev from "../assets/CodeRev.png";
+import Mindscribe from "../assets/Mindscribe.png";
+import QuickShop from "../assets/QuickShop.png";
+import TexttoEmoji from "../assets/TexttoEmoji.png";
+import Quiz from "../assets/Quiz.png"
+
 
 export const LINKS = [
   { id: "home", name: "home" },
@@ -27,63 +25,41 @@ export const MARQUEE_TEXT =
 export const PROJECTS = [
   {
     id: 1,
-    title: "Uber-Clone",
+    title: "MindScribe",
     description:
-      "Building a ride-booking platform with the MERN stack, integrating real-time location tracking, fare calculation, and user authentication.",
-    imgSrc: project1,
-    link: "https://github.com/Parthsingh14/UBER-Clone.git",
+      "MindScribe leverages AI with the MERN stack to revolutionize blogging—offering real-time writing assistance, intuitive content management, and a user-friendly platform for creators to share impactful ideas.",
+    imgSrc: Mindscribe,
+    link: "https://mindscribe-blogify.vercel.app/",
   },
   {
     id: 2,
     title: "AI-Code Rev",
     description:
       "AI CodeRev is an AI-powered code review tool that analyzes and provides insights on code quality, best practices, and optimizations.",
-    imgSrc: project2,
+    imgSrc: CodeRev,
     link: "https://ai-code-reviewer-frontend.onrender.com/",
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    description:
-      "A personal portfolio website to showcase projects and skills.",
-    imgSrc: project3,
-    link: "https://parthcodes.netlify.app",
   },
   {
     id: 4,
     title: "Quick-Shop",
     description:
-      "It's a dynamic e-commerce platform featuring advanced product search, filtering, and seamless user experience.",
-    imgSrc: project4,
+      "A modern e-commerce web app with debounced search, dynamic filtering, cart functionality, and an integrated payment flow — enhanced with smart product recommendations for a personalized user experience.",
+    imgSrc: QuickShop,
     link: "https://quickk-shop.netlify.app/",
   },
-  // {
-  //   id: 5,
-  //   title: "Password-Manager",
-  //   description: "A task management tool to organize and prioritize work.",
-  //   imgSrc: project5,
-  //   link: "https://example.com/task-management-tool",
-  // },
   {
-    id: 6,
+    id: 5,
     title: "Message-Encryption-Decryption",
     description:
       "It's a secure tool that converts text into emojis for encryption and decrypts them back to text using ASCII values.",
-    imgSrc: project6,
+    imgSrc: TexttoEmoji,
     link: "https://parthsingh14.github.io/Text-to-Emoji/",
   },
   {
-    id: 7,
-    title: "Drum-kit-website",
-    description: "It's an interactive web app that lets users play drum sounds using keyboard keys or mouse clicks.",
-    imgSrc: project7,
-    link: "https://parthsingh14.github.io/Drum-kit-website/",
-  },
-  {
-    id: 8,
+    id: 6,
     title: "Quiz-game",
     description: "it's a fun and interactive web app that tests users' knowledge with multiple-choice questions and real-time score tracking.",
-    imgSrc: project8,
+    imgSrc: Quiz,
     link: "https://parthsingh14.github.io/Quiz-game.github.io/",
   },
 ];
@@ -92,26 +68,9 @@ export const ABOUT =
   "I am an AI-driven Full Stack Developer with a strong focus on building scalable, efficient, and user-friendly web applications. Skilled in both frontend and backend development, I work extensively with technologies like React, Next.js, Node.js, and Express, along with databases such as MongoDB, PostgreSQL, and MySQL. With hands-on experience in AI integrations and modern tools like Docker, Redis, and FastAPI, I bring innovation and adaptability to every project. Passionate about continuous growth, I thrive on learning emerging technologies and applying them to craft impactful digital solutions.";
 
 
-export const EXPERIENCES = [
-  {
-    company: "Google",
-    role: "Software Engineer",
-    year: "12/2023 - Present",
-    description:
-      "Developing and maintaining scalable web applications using modern technologies. Collaborating with cross-functional teams to design and implement new features. Enhancing application performance and ensuring high-quality code through rigorous testing and code reviews. Contributing to the continuous improvement of development processes and best practices.",
-  },
-  {
-    company: "Facebook",
-    role: "Frontend Developer",
-    year: "01/2021 - 11/2023",
-    description:
-      "Implemented user interfaces for web applications using React and Redux. Worked closely with designers to ensure seamless user experiences. Optimized components for maximum performance across a vast array of web-capable devices and browsers. Participated in code reviews and provided feedback to maintain high code quality.",
-  },
-];
-
 export const SOCIAL_MEDIA_LINKS = [
   {
-    href: "https://www.instagram.com/_.parth._19?igsh=MXJmMWZ6ZXEwcWZ1Mw==",
+    href: "https://www.instagram.com/parth.noir?igsh=bWs4bHNjNTNpdnBw",
     icon: <FaInstagram size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
   },
   {
