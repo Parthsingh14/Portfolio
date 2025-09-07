@@ -27,7 +27,7 @@ export const PROJECTS = [
     id: 1,
     title: "MindScribe",
     description:
-      "Building a ride-booking platform with the MERN stack, integrating real-time location tracking, fare calculation, and user authentication.",
+      "MindScribe leverages AI with the MERN stack to revolutionize blogging—offering real-time writing assistance, intuitive content management, and a user-friendly platform for creators to share impactful ideas.",
     imgSrc: Mindscribe,
     link: "https://mindscribe-blogify.vercel.app/",
   },
@@ -43,7 +43,7 @@ export const PROJECTS = [
     id: 4,
     title: "Quick-Shop",
     description:
-      "It's a dynamic e-commerce platform featuring advanced product search, filtering, and seamless user experience.",
+      "A modern e-commerce web app with debounced search, dynamic filtering, cart functionality, and an integrated payment flow — enhanced with smart product recommendations for a personalized user experience.",
     imgSrc: QuickShop,
     link: "https://quickk-shop.netlify.app/",
   },
