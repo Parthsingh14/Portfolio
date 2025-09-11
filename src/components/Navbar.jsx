@@ -69,7 +69,7 @@ function Navbar() {
         >
           <Link to={isUIPlayground ? "/" : "/ui-playground"}>
             <span className="relative z-10 px-2 lg:px-0 hover:text-white transition duration-300 ease-in-out">
-              {isUIPlayground ? "Portfolio" : "UI-Playground"}
+              {isUIPlayground ? "<Portfolio />" : "< UI-Playground />"}
             </span>
           </Link>
         </motion.div>
