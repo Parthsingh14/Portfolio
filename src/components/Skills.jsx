@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 
 const skillsData = {
+  
   Frontend: [
     "React.js",
     "Next.js",
@@ -24,7 +25,7 @@ const skillsData = {
   ],
   Languages: ["JavaScript", "TypeScript","JAVA"],
   "AI & GenAI": [
-    "LangChain.js (Learning)",
+    "LangChain.js",
     "LLM Integration",
     "Generative AI",
     "Prompt Engineering",
@@ -45,16 +46,13 @@ function Skills() {
       <section id="skills" className="relative py-20 px-6 md:px-12">
         {/* Function-style heading */}
         <motion.pre
-          whileHover={{
-            textShadow: "0px 0px 15px rgba(163,230,53,1)",
-          }}
           className="text-left whitespace-pre-wrap mb-16"
         >
-          <span className="text-white text-md">const </span>
-          <span className="text-lime-300 text-xl md:text-3xl font-bold cursor-pointer transition duration-300 hover:text-lime-200 hover:drop-shadow-[0_0_6px_rgba(163,230,53,0.8)]">
+          <span className="text-white lg:text-2xl">const </span>
+          <span className="text-lime-300 text-xl md:text-5xl font-bold cursor-pointer transition duration-300 hover:text-lime-200 hover:drop-shadow-[0_0_6px_rgba(163,230,53,0.8)]">
             Skills
           </span>
-          <span className="text-white"> = () =&gt; {"{"} </span>
+          <span className="text-white lg:text-2xl"> = () =&gt; {"{"} </span>
         </motion.pre>
 
         {/* Skills Circles */}
@@ -115,8 +113,17 @@ function Skills() {
 
         {/* Closing bracket */}
         <motion.pre className="text-left whitespace-pre-wrap mt-16">
-          <span className="text-white">{"}"}</span>
+          <span className="text-white text-2xl">{"}"}</span>
         </motion.pre>
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative left-[40%] h-px w-[25%] bg-gradient-to-r from-transparent via-lime-300 to-transparent"></div>
+        </motion.div>
       </section>
     </div>
   );
