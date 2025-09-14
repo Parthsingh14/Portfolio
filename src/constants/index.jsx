@@ -55,17 +55,14 @@ export const PROJECTS = [
     imgSrc: TexttoEmoji,
     link: "https://parthsingh14.github.io/Text-to-Emoji/",
   },
-  {
-    id: 6,
-    title: "Quiz-game",
-    description: "it's a fun and interactive web app that tests users' knowledge with multiple-choice questions and real-time score tracking.",
-    imgSrc: Quiz,
-    link: "https://parthsingh14.github.io/Quiz-game.github.io/",
-  },
+  // {
+  //   id: 6,
+  //   title: "Quiz-game",
+  //   description: "it's a fun and interactive web app that tests users' knowledge with multiple-choice questions and real-time score tracking.",
+  //   imgSrc: Quiz,
+  //   link: "https://parthsingh14.github.io/Quiz-game.github.io/",
+  // },
 ];
-
-export const ABOUT =
-  "I am an AI-driven Full Stack Developer with a strong focus on building scalable, efficient, and user-friendly web applications. Skilled in both frontend and backend development, I work extensively with technologies like React, Next.js, Node.js, and Express, along with databases such as MongoDB, PostgreSQL, and MySQL. With hands-on experience in AI integrations and modern tools like Docker, Redis, and FastAPI, I bring innovation and adaptability to every project. Passionate about continuous growth, I thrive on learning emerging technologies and applying them to craft impactful digital solutions.";
 
 
 export const SOCIAL_MEDIA_LINKS = [

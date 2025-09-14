@@ -10,11 +10,14 @@ const taglineLines = [
   "and Modern Full-Stack Technologies",
 ];
 
+const shortDescription =
+  "I am an AI-Full Stack Developer passionate about blending modern web technologies with Generative AI. From building multi-LLM playgrounds and scalable content platforms to integrating LangChain.js and AI pipelines into real-world systems, I focus on crafting products that are both intelligent and robust. With experience in Node.js, Next.js, MongoDB, Redis, and Docker, I thrive on solving complex challenges and turning innovative ideas into impactful applications.";
+
 function Hero() {
   return (
     <div className="relative">
       <FloatingIcons />
-      <section className="relative" id="home">
+      <section className="relative mt-2" id="home">
         <div className="flex flex-col items-start justify-center min-h-screen ml-5 md:ml-40 sm:ml-10">
           {/* Terminal style whoami */}
           <motion.p
@@ -113,6 +116,31 @@ function Hero() {
               </motion.span>
             </a>
           </motion.div>
+
+          {/* Short Description */}
+          <div className="max-w-3xl mr-2 mt-4 text-xs sm:text-sm md:text-lg text-gray-400 leading-relaxed">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 2 }}
+            >
+              {shortDescription.split("").map((letter, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ color: "#9ca3af" }} // gray-400
+                  whileHover={{
+                    color: "#a3e635",
+                    scale: 1.1,
+                    y: -1,
+                    transition: { duration: 0.2 },
+                  }}
+                  className="inline-block cursor-pointer"
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </motion.p>
+          </div>
         </div>
       </section>
     </div>
