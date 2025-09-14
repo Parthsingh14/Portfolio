@@ -1,84 +1,94 @@
+"use client"
 import { motion } from "framer-motion";
 import FloatingIcons from "./FloatingIcons";
+import ParthCoding from "../assets/ParthCoding.jpeg";
 
-function About() {
+const AboutMe = () => {
   return (
-    <div className="relative">
+    <div className="relative font-mono bg-transparent text-white">
       <FloatingIcons />
-      <section id="about" className="relative py-20 lg:min-h-screen">
-        <motion.div 
-          className="text-center"
+      <section
+        id="about"
+        className="relative py-16 lg:py-24 px-6 md:px-12 flex flex-col md:flex-row items-center gap-12"
+      >
+        {/* IMAGE FIRST ON MOBILE, SECOND ON DESKTOP */}
+        <div className="order-1 md:order-2 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            whileHover="hover"
+            className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72"
+          >
+            {/* IMAGE */}
+            <img
+              src={ParthCoding}
+              alt="Parth Coding"
+              className="w-full h-full object-cover relative z-10"
+            />
+
+            {/* BORDER */}
+            <motion.div
+              variants={{
+                rest: { scale: 0.9, opacity: 0 },
+                hover: { scale: 1.1, opacity: 1 },
+              }}
+              initial="rest"
+              animate="rest"
+              whileHover="hover"
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 rounded-xl border-2 border-lime-300 z-0"
+            />
+          </motion.div>
+        </div>
+
+        {/* ABOUT CONTENT */}
+        <motion.pre
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
+          className="order-2 md:order-1 text-left whitespace-pre-wrap text-xs sm:text-sm md:text-base leading-relaxed md:flex-1"
         >
-          <motion.h2
-            transition={{ duration: 0.5 }}
-            whileHover={{ 
-              textShadow: "0px 0px 15px rgba(163,230,53,1)",
-            }}
-            className="text-4xl md:text-6xl lg:text-8xl text-lime-300 font-extrabold mb-6"
-          >
-            About Me
-          </motion.h2>
-          
-          <div className="flex justify-center">
-            <motion.div
-              className="h-1 bg-lime-300 w-24"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            />
-          </div>
-        </motion.div>
+          <span className="text-white lg:text-xl">const </span>
+          <span className="text-lime-300 text-lg md:text-4xl font-bold cursor-pointer transition duration-300 hover:text-lime-200 hover:drop-shadow-[0_0_6px_rgba(163,230,53,0.8)]">
+            aboutMe
+          </span>
+          <span className="text-white lg:text-xl"> = () =&gt; {'{'}</span>
 
-        <div className="flex justify-center px-4 mt-12">
-          <motion.div
-            className="max-w-4xl relative"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute -inset-2 bg-lime-300/10 rounded-xl blur-lg opacity-50"></div>
-            <div className="relative bg-gray-900/80 backdrop-blur-sm border border-lime-300/20 rounded-xl p-8 md:p-12">
-              <motion.p
-                className="text-lg md:text-xl lg:text-2xl leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-              >
-              As a passionate <span className="text-lime-300 font-medium">AI-Full Stack Developer</span>, I craft intelligent and scalable web applications that seamlessly integrate artificial intelligence to enhance productivity and user experience. I focus on building modern, efficient solutions where AI is not just an add-on, but a core part of the architecture—enabling smarter workflows, automation, and innovation across projects.
-              </motion.p>
-              
-              <motion.p
-                className="mt-6 text-lg md:text-xl lg:text-2xl leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                viewport={{ once: true }}
-              >
-                My approach combines clean code principles with innovative problem-solving. I'm passionate about continuous learning and staying current with industry trends to implement cutting-edge solutions that deliver real value.
-              </motion.p>
+          {"\n"}
+          <p className="mt-4 lg:mt-6 lg:text-lg">
+            Hey, I'm Parth Singh — a B.Tech Computer Science graduate and an
+            AI-Full Stack Developer passionate about building scalable web and
+            AI-driven systems.
+            {"\n\n"}
+            During my time at Bytemasks, I contributed to both frontend and
+            backend development on projects like <b>Monitor</b> (analytics
+            dashboard) and <b>Safe AI</b> (multi-model chat platform with prompt
+            library and collaboration). I also built <b>Blogify</b> (advanced
+            blog management system with GenAI integrations, Cloudinary, Redis
+            caching, and admin APIs) and <b>EchoAI</b> (multi-LLM playground for
+            comparing outputs across models), showcasing my expertise in
+            full-stack and AI integrations.
+            {"\n\n"}
+            I specialize in <b>React.js, Next.js, Node.js, Express.js, MongoDB,
+            Redis, and Docker</b>, with hands-on experience integrating{" "}
+            <b>Generative AI, LangChain.js, and LLMs</b> into real-world
+            applications. My focus is on <b>clean architecture, scalability, and
+            performance optimization</b>.
+            {"\n\n"}
+            Beyond coding, I constantly explore new technologies, refine
+            problem-solving skills, and aim to build products that combine{" "}
+            <b>creativity, intelligence, and impact</b>.
+          </p>
 
-              <motion.div
-                className="mt-10 flex justify-center"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <div className="h-px w-32 bg-gradient-to-r from-transparent via-lime-300 to-transparent"></div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
+          {"\n"}
+          <span className="text-white lg:text-xl">{'}'}</span>
+        </motion.pre>
       </section>
     </div>
   );
-}
+};
 
-export default About;
+export default AboutMe;

@@ -49,12 +49,15 @@ function Experience() {
     <div className="relative">
       <FloatingIcons />
       <section id="experience" className="relative py-20">
-        <motion.h2
-          whileHover={{ textShadow: "0px 0px 15px rgba(163,230,53,1)" }}
-          className="my-10 text-center text-3xl md:text-4xl lg:text-8xl text-lime-300 font-extrabold"
+        <motion.pre
+          className="text-left ml-10 whitespace-pre-wrap mb-16"
         >
-          Experience
-        </motion.h2>
+          <span className="text-white lg:text-2xl">const </span>
+          <span className="text-lime-300 text-xl md:text-5xl font-bold cursor-pointer transition duration-300 hover:text-lime-200 hover:drop-shadow-[0_0_6px_rgba(163,230,53,0.8)]">
+            Experience
+          </span>
+          <span className="text-white lg:text-2xl"> = () =&gt; {"{"} </span>
+        </motion.pre>
 
         {/* Mobile Timeline */}
         <div className="lg:hidden mx-auto max-w-md px-4">
@@ -128,6 +131,10 @@ function Experience() {
             ))}
           </div>
         </div>
+
+         <motion.pre className="text-left ml-5 whitespace-pre-wrap mt-16">
+          <span className="text-white text-2xl">{"}"}</span>
+        </motion.pre>
       </section>
     </div>
   );

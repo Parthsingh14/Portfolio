@@ -27,18 +27,13 @@ function Contact() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <motion.h2
-              className="text-4xl md:text-6xl lg:text-8xl font-extrabold mb-6"
-              style={{
-                background: "linear-gradient(90deg, rgba(163,230,53,1) 0%, rgba(210,255,137,1) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
+            <motion.h2 
+              className="mb-3 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-lime-300 via-lime-200 to-lime-400 text-4xl md:text-6xl tracking-tight"
             >
-              Let's Connect
+              {`connectWith("Parth")`}
             </motion.h2>
             <motion.div
-              className="h-1 bg-gradient-to-r from-transparent via-lime-300 to-transparent mx-auto w-1/2"
+              className="h-1 bg-gradient-to-r from-transparent via-lime-300 to-transparent mx-auto w-2/3"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -113,7 +108,9 @@ function Contact() {
                   transition={{ duration: 0.6, delay: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-xl text-lime-300 font-medium">Find Me Online</h3>
+                  <h3 className="text-lg md:text-xl font-mono text-lime-200 bg-gray-800/60 px-4 py-2 rounded-lg border border-lime-300/30 shadow-md">
+                    <span className="text-lime-300">ssh</span> <span className="text-white">parth_singh</span><span className="text-lime-300">@socials</span>
+                  </h3>
                   <div className="flex space-x-6">
                     {SOCIAL_MEDIA_LINKS.map((link, index) => (
                       <motion.a

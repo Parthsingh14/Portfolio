@@ -8,13 +8,15 @@ function Projects() {
       <FloatingIcons />
       <section className="p-8 relative" id="projects">
         {/* Heading */}
-        <motion.h2
-          transition={{ duration: 0.5 }}
-          whileHover={{ textShadow: "0px 0px 15px rgba(163,230,53,1)" }}
-          className="my-10 text-center font-medium text-3xl lg:text-8xl"
+        <motion.pre
+          className="text-left whitespace-pre-wrap mb-16"
         >
-          My Work
-        </motion.h2>
+          <span className="text-white lg:text-2xl">const </span>
+          <span className="text-lime-300 text-xl md:text-5xl font-bold cursor-pointer transition duration-300 hover:text-lime-200 hover:drop-shadow-[0_0_6px_rgba(163,230,53,0.8)]">
+            myProjects
+          </span>
+          <span className="text-white lg:text-2xl"> = () =&gt; {"{"} </span>
+        </motion.pre>
 
         {/* Grid layout instead of columns for cleaner responsiveness */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -57,6 +59,10 @@ function Projects() {
             </motion.a>
           ))}
         </div>
+
+        <motion.pre className="text-left whitespace-pre-wrap mt-16">
+          <span className="text-white text-2xl">{"}"}</span>
+        </motion.pre>
       </section>
     </div>
   );
