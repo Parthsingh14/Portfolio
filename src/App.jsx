@@ -12,7 +12,8 @@ import Practise from "./components/Practise";
 import { AnimatePresence } from "framer-motion";
 import UIPlayground from "./components/UIPlayground";
 import { useState } from "react";
-import IntroLoader from "./components/IntroLoader"; // ✅ loader import
+import IntroLoader from "./components/IntroLoader"; 
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   const [isUIPlayground, setisUIPlayground] = useState(false);
@@ -32,6 +33,7 @@ function App() {
                 isUIPlayground={isUIPlayground}
                 setisUIPlayground={setisUIPlayground}
               />
+              <CustomCursor />
               <Routes>
                 <Route
                   path="/"
