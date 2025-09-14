@@ -17,7 +17,7 @@ function Hero() {
   return (
     <div className="relative">
       <FloatingIcons />
-      <section className="relative mt-2" id="home">
+      <section className="relative lg:top-10" id="home">
         <div className="flex flex-col items-start justify-center min-h-screen ml-5 md:ml-40 sm:ml-10">
           {/* Terminal style whoami */}
           <motion.p

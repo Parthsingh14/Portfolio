@@ -1,6 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CustomCursor = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
   const mousePos = useRef({ x: 0, y: 0 });
   const dotPos = useRef({ x: 0, y: 0 });
   const squarePos = useRef({ x: 0, y: 0 });
@@ -9,6 +11,20 @@ const CustomCursor = () => {
   const squareRef = useRef(null);
 
   useEffect(() => {
+    // detect screen size
+    const checkDevice = () => {
+      setIsDesktop(window.innerWidth > 768); // >768px → desktop
+    };
+
+    checkDevice();
+    window.addEventListener("resize", checkDevice);
+
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return; // ❌ mobile pe kuch mat karo
+
     const handleMouseMove = (e) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
     };
@@ -20,7 +36,7 @@ const CustomCursor = () => {
       dotPos.current.x += (mousePos.current.x - dotPos.current.x) * 0.4;
       dotPos.current.y += (mousePos.current.y - dotPos.current.y) * 0.4;
 
-      // Slower square follow (increased delay effect)
+      // Slower square follow (delayed)
       squarePos.current.x += (mousePos.current.x - squarePos.current.x) * 0.08;
       squarePos.current.y += (mousePos.current.y - squarePos.current.y) * 0.08;
 
@@ -29,7 +45,9 @@ const CustomCursor = () => {
         dotRef.current.style.transform = `translate3d(${dotPos.current.x}px, ${dotPos.current.y}px, 0)`;
       }
       if (squareRef.current) {
-        squareRef.current.style.transform = `translate3d(${squarePos.current.x - 12}px, ${squarePos.current.y - 12}px, 0) rotate(${Date.now() / 20}deg)`;
+        squareRef.current.style.transform = `translate3d(${
+          squarePos.current.x - 12
+        }px, ${squarePos.current.y - 12}px, 0) rotate(${Date.now() / 20}deg)`;
       }
 
       requestAnimationFrame(animate);
@@ -40,7 +58,9 @@ const CustomCursor = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) return null; // ❌ mobile pe return nothing
 
   return (
     <>
