@@ -21,7 +21,7 @@ function ButtonCard({ item }) {
         transition={{ duration: 0.6, ease: "easeInOut" }}
       >
         {/* Front — Preview */}
-        <div className="absolute inset-0 bg-gray-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 shadow-sm [backface-visibility:hidden] flex flex-col justify-between">
+        <div className="absolute inset-0  bg-neutral-900 border border-neutral-800 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 shadow-sm [backface-visibility:hidden] flex flex-col justify-between">
           <div className="flex items-center justify-center flex-1 scale-90 sm:scale-95 lg:scale-100">
             {item.preview}
           </div>
@@ -29,7 +29,7 @@ function ButtonCard({ item }) {
           <div className="mt-2 flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
             <button
               onClick={handleCopy}
-              className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md text-xs sm:text-sm bg-neutral-200 hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition flex items-center gap-1"
+              className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md text-xs sm:text-sm  bg-neutral-800 hover:bg-neutral-700 transition flex items-center gap-1"
               aria-label="Copy code"
             >
               <Copy size={14} />
