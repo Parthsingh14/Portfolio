@@ -69,6 +69,8 @@ function LoaderCard({ item }) {
 
 // LoadersUI — like ButtonsUI
 export default function LoadersUI() {
+  const dots = Array.from({ length: 6 });
+
   const loadersData = [
     {
       id: 1,
@@ -98,16 +100,144 @@ export default function SpinnerLoader() {
       id: 2,
       title: "Dots Loader",
       preview: (
-        <div className="flex space-x-2">
-          {[0, 1, 2].map((i) => (
+        <div className="relative flex items-center justify-center w-20 h-20">
+          {dots.map((_, i) => (
             <motion.span
               key={i}
-              className="w-3 h-3 bg-lime-400 rounded-full"
-              animate={{ y: [0, -6, 0], opacity: [0.6, 1, 0.6] }}
+              className="absolute w-3 h-3 bg-gradient-to-r from-lime-400 to-emerald-500 rounded-full shadow-lg"
+              style={{
+                top: "50%",
+                left: "50%",
+                transformOrigin: "center",
+              }}
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.4, 1],
+                opacity: [0.5, 1, 0.5],
+              }}
               transition={{
-                duration: 0.6,
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.2,
+              }}
+              initial={{
+                x: Math.cos((i / dots.length) * 2 * Math.PI) * 30,
+                y: Math.sin((i / dots.length) * 2 * Math.PI) * 30,
+              }}
+            />
+          ))}
+        </div>
+      ),
+      code: `
+// Spiral Dots Loader
+import { motion } from "framer-motion";
+
+export default function SpiralLoader() {
+  const dots = Array.from({ length: 6 });
+
+  return (
+    <div className="relative flex items-center justify-center w-20 h-20">
+      {dots.map((_, i) => (
+        <motion.span
+          key={i}
+          className="absolute w-3 h-3 bg-gradient-to-r from-lime-400 to-emerald-500 rounded-full shadow-lg"
+          style={{
+            top: "50%",
+            left: "50%",
+            transformOrigin: "center",
+          }}
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.4, 1],
+            opacity: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.2,
+          }}
+          initial={{
+            x: Math.cos((i / dots.length) * 2 * Math.PI) * 30,
+            y: Math.sin((i / dots.length) * 2 * Math.PI) * 30,
+          }}
+        />
+      ))}
+      <motion.span
+        className="absolute w-5 h-5 bg-lime-300 rounded-full opacity-60"
+        animate={{ scale: [1, 1.5, 1], opacity: [0.6, 0.2, 0.6] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </div>
+  );
+}
+      `,
+    },
+    {
+      id: 3,
+      title: "Rectangular Loader",
+      preview: (
+        <div className="flex items-center justify-center w-20 h-20 relative">
+          {/* Outer Rectangle */}
+          <motion.div
+            className="absolute w-16 h-16 border-2 border-lime-400 rounded-lg"
+            animate={{ rotate: 360 }}
+            transition={{
+              repeat: Infinity,
+              duration: 2,
+              ease: "linear",
+            }}
+          />
+
+          {/* Inner Rectangle */}
+          <motion.div
+            className="absolute w-10 h-10 border-4 border-emerald-500 rounded-lg"
+            animate={{ rotate: -360 }}
+            transition={{
+              repeat: Infinity,
+              duration: 5,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+      ),
+      code: `
+import { motion } from "framer-motion";
+
+export default function DualRectLoader() {
+  return (
+    <div className="flex items-center justify-center w-20 h-20 relative">
+      <motion.div
+        className="absolute w-16 h-16 border-4 border-lime-400 rounded-lg"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute w-10 h-10 border-4 border-emerald-500 rounded-lg"
+        animate={{ rotate: -360 }}
+        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+      />
+    </div>
+  );
+}
+      `,
+    },
+    {
+      id: 4,
+      title: "Music Equalizer Loader",
+      preview: (
+        <div className="flex space-x-2">
+          {[0, 1, 2, 3].map((i) => (
+            <motion.div
+              key={i}
+              className="w-2 h-6 bg-lime-400 rounded"
+              animate={{ scaleY: [1, 2, 1], opacity: [0.6, 1, 0.6] }}
+              transition={{
+                duration: 0.8,
                 repeat: Infinity,
                 delay: i * 0.2,
+                ease: "easeInOut",
               }}
             />
           ))}
@@ -116,18 +246,19 @@ export default function SpinnerLoader() {
       code: `
 import { motion } from "framer-motion";
 
-export default function DotsLoader() {
+export default function BarPulseLoader() {
   return (
     <div className="flex space-x-2">
-      {[0, 1, 2].map((i) => (
-        <motion.span
+      {[0, 1, 2, 3].map((i) => (
+        <motion.div
           key={i}
-          className="w-3 h-3 bg-lime-400 rounded-full"
-          animate={{ y: [0, -6, 0], opacity: [0.6, 1, 0.6] }}
+          className="w-2 h-6 bg-lime-400 rounded"
+          animate={{ scaleY: [1, 2, 1], opacity: [0.6, 1, 0.6] }}
           transition={{
-            duration: 0.6,
+            duration: 0.8,
             repeat: Infinity,
             delay: i * 0.2,
+            ease: "easeInOut",
           }}
         />
       ))}
@@ -136,10 +267,60 @@ export default function DotsLoader() {
 }
       `,
     },
+    {
+      id: 5,
+      title: "Multi-Shape Flip Loader",
+      preview: (
+        <div className="flex items-center justify-center w-24 h-24 perspective-[1000px]">
+          <motion.div
+            className="w-14 h-14 bg-gradient-to-tr from-lime-400 via-emerald-500 to-lime-400 shadow-[0_0_20px_rgba(16,185,129,0.6)]"
+            animate={{
+              rotateX: [0, 180, 360],
+              rotateY: [0, 180, 360],
+              scale: [1, 1.1, 1],
+              borderRadius: ["0.25rem", "50%", "0.25rem", "2rem", "0.25rem"],
+              rotateZ: [0, 45, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+      ),
+      code: `
+import { motion } from "framer-motion";
+
+export default function MultiShapeFlipLoader() {
+  return (
+    <div className="flex items-center justify-center w-24 h-24 perspective-[1000px]">
+      <motion.div
+        className="w-14 h-14 bg-gradient-to-tr from-lime-400 via-emerald-500 to-lime-400 shadow-[0_0_20px_rgba(16,185,129,0.6)]"
+        animate={{
+          rotateX: [0, 180, 360],
+          rotateY: [0, 180, 360],
+          scale: [1, 1.1, 1],
+          borderRadius: [
+            "0.25rem",
+            "50%",
+            "0.25rem",
+            "2rem",
+            "0.25rem"
+          ],
+          rotateZ: [0, 45, 0],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </div>
+  );
+}
+      `,
+    },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {loadersData.map((item) => (
         <LoaderCard key={item.id} item={item} />
       ))}
