@@ -5,7 +5,7 @@ import ParthCoding from "../assets/ParthCoding.jpeg";
 
 const AboutMe = () => {
   return (
-    <div className="relative font-mono bg-transparent text-white">
+    <div className="relative bg-transparent text-white">
       <FloatingIcons />
       <section
         id="about"
