@@ -9,6 +9,7 @@ import CodeRev from "../assets/CodeRev.png";
 import Mindscribe from "../assets/Mindscribe.png";
 import QuickShop from "../assets/QuickShop.png";
 import TexttoEmoji from "../assets/TexttoEmoji.png";
+import RAGProject from "../assets/RAG.png"
 import Quiz from "../assets/Quiz.png"
 
 
@@ -24,7 +25,14 @@ export const MARQUEE_TEXT =
 
 export const PROJECTS = [
   {
-    id: 1,
+  id: 1,
+  title: "Internal Knowledge Assistant (RAG)",
+  description:
+    "An enterprise-style RAG-based AI assistant that answers queries strictly from internal documents. Implements semantic chunking, Gemini embeddings, and Pinecone vector search with a grounded LLaMA model to deliver accurate, context-aware responses.",
+  imgSrc: RAGProject,
+  link: "https://company-internal-chat-bot.vercel.app/",
+},{
+    id: 2,
     title: "MindScribe",
     description:
       "MindScribe leverages AI with the MERN stack to revolutionize blogging—offering real-time writing assistance, intuitive content management, and a user-friendly platform for creators to share impactful ideas.",
@@ -32,7 +40,7 @@ export const PROJECTS = [
     link: "https://mindscribe-blogify.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "AI-Code Rev",
     description:
       "AI CodeRev is an AI-powered code review tool that analyzes and provides insights on code quality, best practices, and optimizations.",
