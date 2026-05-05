@@ -11,7 +11,7 @@ const taglineLines = [
 ];
 
 const shortDescription =
-  "I am an AI-Full Stack Developer passionate about blending modern web technologies with Generative AI. From building multi-LLM playgrounds and scalable content platforms to integrating LangChain.js and AI pipelines into real-world systems, I focus on crafting products that are both intelligent and robust. With experience in Node.js, Next.js, MongoDB, Redis, and Docker, I thrive on solving complex challenges and turning innovative ideas into impactful applications.";
+  "I am an AI-Full Stack Developer, currently an Associate System Engineer (Trainee) at IBM, passionate about blending modern web technologies with Generative AI. From building multi-LLM playgrounds and scalable content platforms to integrating LangChain.js and AI pipelines into real-world systems, I focus on crafting products that are both intelligent and robust. With experience in Node.js, Next.js, MongoDB, Redis, and Docker, I thrive on solving complex challenges and turning innovative ideas into impactful applications.";
 
 function Hero() {
   return (
@@ -31,33 +31,41 @@ function Hero() {
 
           {/* Name */}
           <motion.h1
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="text-xl sm:text-4xl lg:text-6xl font-extrabold select-none tracking-wider mb-4"
+            className="text-xl sm:text-4xl lg:text-6xl font-extrabold select-none tracking-wider mb-4 flex items-end gap-2"
           >
-            {name.split("").map((letter, i) => (
-              <motion.span
-                key={i}
-                initial={{ color: "#a3e635" }} // lime-400
-                whileHover={{
-                  scale: 1.2,
-                  color: "#84cc16", // lime-500
-                  y: -5,
-                  textShadow: "0 0 8px rgba(163, 230, 53, 0.7)",
-                  transition: { type: "spring", stiffness: 400, damping: 10 },
-                }}
-                className="inline-block mr-1 cursor-pointer"
-                style={{
-                  background:
-                    "linear-gradient(to right, #a3e635, #65a30d, #a3e635)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                {letter}
-              </motion.span>
-            ))}
+            {/* Name letters */}
+            <span>
+              {name.split("").map((letter, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ color: "#a3e635" }}
+                  whileHover={{
+                    scale: 1.2,
+                    color: "#84cc16",
+                    y: -5,
+                    textShadow: "0 0 8px rgba(163, 230, 53, 0.7)",
+                    transition: { type: "spring", stiffness: 400, damping: 10 },
+                  }}
+                  className="inline-block mr-1 cursor-pointer"
+                  style={{
+                    background:
+                      "linear-gradient(to right, #a3e635, #65a30d, #a3e635)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </span>
+
+            {/* Small @IBM tag */}
+            <span className="text-xs sm:text-sm lg:text-base text-gray-500 font-normal ml-2 opacity-80">
+              @IBM (Trainee)
+            </span>
           </motion.h1>
 
           {/* Tagline with manual line breaks */}
