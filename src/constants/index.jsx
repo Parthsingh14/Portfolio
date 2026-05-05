@@ -10,7 +10,7 @@ import Mindscribe from "../assets/Mindscribe.png";
 import QuickShop from "../assets/QuickShop.png";
 import TexttoEmoji from "../assets/TexttoEmoji.png";
 import RAGProject from "../assets/RAG.png"
-import Quiz from "../assets/Quiz.png"
+
 
 
 export const LINKS = [
@@ -63,19 +63,13 @@ export const PROJECTS = [
     imgSrc: TexttoEmoji,
     link: "https://parthsingh14.github.io/Text-to-Emoji/",
   },
-  // {
-  //   id: 6,
-  //   title: "Quiz-game",
-  //   description: "it's a fun and interactive web app that tests users' knowledge with multiple-choice questions and real-time score tracking.",
-  //   imgSrc: Quiz,
-  //   link: "https://parthsingh14.github.io/Quiz-game.github.io/",
-  // },
+
 ];
 
 
 export const SOCIAL_MEDIA_LINKS = [
   {
-    href: "https://www.instagram.com/parth.noir?igsh=bWs4bHNjNTNpdnBw",
+    href: "https://www.instagram.com/parth.sx?igsh=aGxvbDN6YmgwNGxm",
     icon: <FaInstagram size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
   },
   {

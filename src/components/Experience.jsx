@@ -3,6 +3,18 @@ import { motion } from "framer-motion";
 import FloatingIcons from "./FloatingIcons";
 
 const experienceData = [
+  {
+  id: 0,
+  role: "Associate System Engineer (Trainee)",
+  company: "IBM",
+  period: "May 2026 - Present",
+  description: [
+    "Currently undergoing structured training and evaluation as part of onboarding.",
+    "Building foundational knowledge in enterprise systems, software development practices, and internal tools.",
+    "Preparing for assessment to transition into a full-time engineering role."
+  ],
+  type: "fulltime",
+},
  {
   id: 1,
   role: "Frontend & Backend Developer (Internship)",
@@ -21,7 +33,7 @@ const experienceData = [
   id: 2,
   role: "Full Stack Developer - Shrikart E-commerce",
   company: "Freelance Project",
-  period: "Feb 2025",
+  period: "May 2025",
   description: [
     "Developed Shrikart, a full-featured e-commerce platform for local artisans using MERN stack",
     "Implemented CRUD operations for product management, user authentication, and order processing",
@@ -33,7 +45,7 @@ const experienceData = [
   id: 3,
   role: "Frontend Developer - Discovery Drift ",
   company: "Freelance Project",
-  period: "May 2025",
+  period: "Feb 2025",
   description: [
      "Developed a responsive portfolio website for a travel and service agency showcasing cars, hotel rooms, and curated experiences",
     "Implemented engaging animations and smooth transitions for service galleries to enhance user interaction",
@@ -75,10 +87,10 @@ function Experience() {
             {experienceData.map((exp, index) => (
               <div key={exp.id} className="relative pl-12 mb-12">
                 {/* Timeline dot */}
-                <div className={`absolute left-4 top-6 -translate-x-1/2 w-4 h-4 rounded-full ${exp.type === 'internship' ? 'bg-lime-300' : 'bg-gray-400'}`} />
+                <div className={`absolute left-4 top-6 -translate-x-1/2 w-4 h-4 rounded-full ${exp.company === 'IBM' ? 'bg-lime-300' : 'bg-gray-400'}`} />
                 
                 <motion.div
-                  className={`p-5 rounded-xl border ${exp.type === 'internship' ? 'border-lime-300 bg-lime-300/10' : 'border-gray-600 bg-gray-800/50'} shadow-lg`}
+                  className={`p-5 rounded-xl border ${exp.company === 'IBM' ? 'border-lime-300 bg-lime-300/10' : 'border-gray-600 bg-gray-800/50'} shadow-lg`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -113,10 +125,10 @@ function Experience() {
                 className={`relative mb-16 w-full ${index % 2 === 0 ? "pr-[52%]" : "pl-[52%]"}`}
               >
                 {/* Timeline dot */}
-                <div className={`absolute top-6 -translate-y-1/2 w-6 h-6 rounded-full ${exp.type === 'internship' ? 'bg-lime-300' : 'bg-gray-400'} ${index % 2 === 0 ? 'right-[calc(50%-14px)]' : 'left-[calc(50%-14px)]'}`} />
+                <div className={`absolute top-6 -translate-y-1/2 w-6 h-6 rounded-full ${exp.company === 'IBM' ? 'bg-lime-300' : 'bg-gray-400'} ${index % 2 === 0 ? 'right-[calc(50%-14px)]' : 'left-[calc(50%-14px)]'}`} />
                 
                 <motion.div
-                  className={`p-6 rounded-xl border ${exp.type === 'internship' ? 'border-lime-300 bg-lime-300/10' : 'border-gray-600 bg-gray-800/50'} shadow-lg relative ${index % 2 === 0 ? 'mr-8' : 'ml-8'}`}
+                  className={`p-6 rounded-xl border ${exp.company === 'IBM' ? 'border-lime-300 bg-lime-300/10' : 'border-gray-600 bg-gray-800/50'} shadow-lg relative ${index % 2 === 0 ? 'mr-8' : 'ml-8'}`}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
