@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import FloatingIcons from "./FloatingIcons";
-import ParthCoding from "../assets/ParthCoding.jpeg";
+import ParthCoding from "../assets/Parth.png";
 
 const AboutMe = () => {
   return (
