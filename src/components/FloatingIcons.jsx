@@ -1,54 +1,122 @@
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaJs, FaDatabase, FaHtml5, FaCss3Alt, FaGitAlt } from "react-icons/fa";
+import {
+  FaReact,
+  FaNodeJs,
+  FaJs,
+  FaDatabase,
+  FaGitAlt,
+} from "react-icons/fa";
+
 import { DiJava } from "react-icons/di";
-import { DiCode } from "react-icons/di";
+import { SiMongodb, SiDocker } from "react-icons/si";
+
+const icons = [
+  {
+    Component: FaReact,
+    size: 90,
+    top: "10%",
+    left: "8%",
+    delay: 0,
+  },
+
+  {
+    Component: FaNodeJs,
+    size: 85,
+    top: "20%",
+    right: "8%",
+    delay: 0.8,
+  },
+
+  {
+    Component: FaJs,
+    size: 75,
+    top: "65%",
+    left: "10%",
+    delay: 1.2,
+  },
+
+  {
+    Component: FaDatabase,
+    size: 80,
+    top: "70%",
+    right: "12%",
+    delay: 1.8,
+  },
+
+  {
+    Component: SiMongodb,
+    size: 70,
+    top: "40%",
+    left: "4%",
+    delay: 2,
+  },
+
+  {
+    Component: SiDocker,
+    size: 70,
+    top: "45%",
+    right: "5%",
+    delay: 2.4,
+  },
+
+  {
+    Component: FaGitAlt,
+    size: 70,
+    bottom: "8%",
+    left: "45%",
+    delay: 1,
+  },
+
+  {
+    Component: DiJava,
+    size: 85,
+    top: "12%",
+    left: "45%",
+    delay: 1.5,
+  },
+];
 
 const FloatingIcons = () => {
-  const icons = [
-    { Component: FaReact, size: 60 },
-    { Component: FaNodeJs, size: 60 },
-    { Component: FaJs, size: 50 },
-    { Component: FaDatabase, size: 50 },
-    { Component: FaHtml5, size: 50 },
-    { Component: FaCss3Alt, size: 50 },
-    { Component: FaGitAlt, size: 50 },
-    { Component: DiJava, size: 60 },
-    { Component: DiCode, size: 60 },
-    
-  ];
-
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      {icons.map(({ Component, size }, index) => {
-        const randomX = Math.random() * 100 - 50; // Random X position
-        const randomY = Math.random() * 100 - 50; // Random Y position
-        const duration = Math.random() * 4 + 2; // Random animation duration
-
-        return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {icons.map(
+        (
+          {
+            Component,
+            size,
+            delay,
+            ...position
+          },
+          index
+        ) => (
           <motion.div
             key={index}
-            className="absolute text-gray-400 opacity-20"
+            className="absolute text-[var(--primary)]"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
+              ...position,
+              opacity: 0.125,
             }}
-            initial={{ y: randomY, x: randomX, opacity: 0.2 }}
             animate={{
-              y: [randomY, randomY + 20, randomY],
-              x: [randomX, randomX + 20, randomX],
-              opacity: 0.3,
+              y: [0, -20, 0],
+              rotate: [0, 4, -4, 0],
+              scale: [1, 1.03, 1],
             }}
             transition={{
-              duration,
+              duration: 8,
               repeat: Infinity,
-              repeatType: "loop",
               ease: "easeInOut",
+              delay,
             }}
           >
             <Component size={size} />
           </motion.div>
-        );
-      })}
+        )
+      )}
+
+      {/* ambient glow */}
+      <div className="absolute left-[20%] top-[25%] h-72 w-72 rounded-full bg-[var(--primary)] opacity-[0.03] blur-3xl" />
+
+      <div className="absolute bottom-[10%] right-[15%] h-80 w-80 rounded-full bg-[var(--secondary)] opacity-[0.03] blur-3xl" />
     </div>
   );
 };

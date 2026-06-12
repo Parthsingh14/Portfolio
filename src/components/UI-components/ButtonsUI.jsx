@@ -5,69 +5,86 @@ import { Rocket, Save } from "lucide-react";
 
 function ButtonCard({ item }) {
   const [flipped, setFlipped] = useState(false);
+
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(item.code.trim());
+
     setCopied(true);
+
     setTimeout(() => setCopied(false), 1600);
   };
 
   return (
-    <div className="relative h-52 sm:h-60 lg:h-72 [perspective:1200px]">
+    <div className="relative h-56 sm:h-64 lg:h-72 [perspective:1200px]">
       <motion.div
         className="absolute inset-0 [transform-style:preserve-3d]"
-        animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        animate={{
+          rotateY: flipped ? 180 : 0,
+        }}
+        transition={{
+          duration: 0.6,
+          ease: "easeInOut",
+        }}
       >
-        {/* Front — Preview */}
-        <div className="absolute inset-0  bg-neutral-900 border border-neutral-800 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 shadow-sm [backface-visibility:hidden] flex flex-col justify-between">
-          <div className="flex items-center justify-center flex-1 scale-90 sm:scale-95 lg:scale-100">
+        {/* Front */}
+        <div className="absolute inset-0 flex flex-col justify-between rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-[0_10px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl [backface-visibility:hidden]">
+          {/* Preview */}
+          <div className="flex flex-1 items-center justify-center">
             {item.preview}
           </div>
 
-          <div className="mt-2 flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
+          {/* Actions */}
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
             <button
               onClick={handleCopy}
-              className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md text-xs sm:text-sm  bg-neutral-800 hover:bg-neutral-700 transition flex items-center gap-1"
-              aria-label="Copy code"
+              className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-xs text-[var(--text-primary)] transition hover:border-[var(--primary)] hover:bg-white/10 sm:text-sm"
             >
               <Copy size={14} />
+
               {copied ? "Copied!" : "Copy"}
             </button>
+
             <button
               onClick={() => setFlipped(true)}
-              className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-md text-xs sm:text-sm bg-lime-400 hover:bg-lime-300 text-black font-medium transition flex items-center gap-1"
-              aria-label="Show code"
+              className="flex items-center gap-2 rounded-xl bg-[image:var(--gradient-primary)] px-4 py-2 text-xs font-medium text-white shadow-[0_10px_25px_rgba(124,58,237,0.25)] transition hover:scale-[1.02] sm:text-sm"
             >
-              <Code2 size={14} /> Code
+              <Code2 size={14} />
+              Code
             </button>
           </div>
         </div>
 
-        {/* Back — Code */}
-        <div className="absolute inset-0 bg-neutral-900 text-neutral-100 border border-neutral-800 rounded-xl sm:rounded-2xl p-2.5 sm:p-4 shadow-sm [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col">
-          <div className="flex items-center justify-between mb-1 sm:mb-2">
-            <span className="text-[10px] sm:text-xs uppercase tracking-wide opacity-70">
+        {/* Back */}
+        <div className="absolute inset-0 flex flex-col rounded-[2rem] border border-white/10 bg-[var(--surface)] p-4 text-[var(--text-primary)] backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+          {/* Header */}
+          <div className="mb-3 flex items-center justify-between">
+            <span className="text-xs uppercase tracking-[0.2em] text-[var(--text-secondary)]">
               {item.title || "Component Code"}
             </span>
-            <div className="flex gap-1.5 sm:gap-2 flex-wrap">
+
+            <div className="flex gap-2">
               <button
                 onClick={handleCopy}
-                className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md text-[10px] sm:text-xs bg-neutral-800 hover:bg-neutral-700 transition flex items-center gap-1"
+                className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-3 py-1 text-xs transition hover:bg-white/10"
               >
-                <Copy size={12} /> {copied ? "Copied!" : "Copy"}
+                <Copy size={12} />
+                {copied ? "Copied!" : "Copy"}
               </button>
+
               <button
                 onClick={() => setFlipped(false)}
-                className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md text-[10px] sm:text-xs bg-lime-400 hover:bg-lime-300 text-black font-medium transition flex items-center gap-1"
+                className="flex items-center gap-1 rounded-lg bg-[image:var(--gradient-primary)] px-3 py-1 text-xs text-white transition hover:opacity-90"
               >
-                <Eye size={12} /> Preview
+                <Eye size={12} />
+                Preview
               </button>
             </div>
           </div>
 
-          <pre className="text-[10px] sm:text-xs leading-4 overflow-auto whitespace-pre-wrap flex-1 rounded-md bg-neutral-950/60 p-2 sm:p-3">
+          {/* Code */}
+          <pre className="scrollbar-hide flex-1 overflow-auto rounded-2xl border border-white/5 bg-black/20 p-3 text-[10px] leading-5 text-[var(--text-secondary)] sm:text-xs">
             {item.code.trim()}
           </pre>
         </div>
@@ -117,107 +134,96 @@ function ButtonsUI() {
       title: "Primary / Pulse",
       preview: (
         <motion.button
-      onClick={handleClickLaunch}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="relative  px-8 py-4 rounded-xl font-bold 
-                 bg-gradient-to-r from-gray-900 via-black to-gray-900 
-                 text-white shadow-2xl overflow-hidden group"
-    >
-      {/* Animated gradient background */}
-      <motion.div
-        className="absolute inset-0 opacity-80 group-hover:opacity-100"
-        animate={{
-          background: [
-            "linear-gradient(45deg, #000000, #171717, #000000)",
-            "linear-gradient(60deg, #000000, #262626, #000000)",
-            "linear-gradient(45deg, #000000, #171717, #000000)",
-          ],
-        }}
-        transition={{ duration: 4, repeat: Infinity }}
-      />
-
-      {/* Pulsing lime border */}
-      <motion.div
-        className="absolute inset-0 rounded-xl"
-        animate={{
-          boxShadow: [
-            "0 0 0px 0px rgba(132, 204, 22, 0.3)",
-            "0 0 0px 3px rgba(132, 204, 22, 0.6)",
-            "0 0 0px 0px rgba(132, 204, 22, 0.3)",
-          ],
-        }}
-        transition={{ duration: 2, repeat: Infinity }}
-      />
-
-      {/* Inner glow */}
-      <motion.div
-        className="absolute inset-0 rounded-xl"
-        animate={{
-          boxShadow: [
-            "inset 0 0 10px rgba(0, 0, 0, 0.5)",
-            "inset 0 0 20px rgba(0, 0, 0, 0.8)",
-            "inset 0 0 10px rgba(0, 0, 0, 0.5)",
-          ],
-        }}
-        transition={{ duration: 3, repeat: Infinity }}
-      />
-
-      {/* Particles */}
-      {!launched &&
-        [...Array(6)].map((_, i) => (
+          onClick={handleClickLaunch}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
+          className="group relative overflow-hidden rounded-2xl px-8 py-4 font-semibold text-white shadow-[0_15px_40px_rgba(124,58,237,0.25)]"
+          style={{
+            background: "linear-gradient(135deg, #7C3AED, #3B82F6)",
+          }}
+        >
+          {/* Glow pulse */}
           <motion.div
-            key={i}
-            custom={i}
-            variants={particleVariants}
-            initial="initial"
-            animate="animate"
-            className="absolute w-1.5 h-1.5 rounded-full bg-lime-400"
-            style={{ left: "50%", top: "50%" }}
+            className="absolute inset-0 rounded-2xl"
+            animate={{
+              boxShadow: [
+                "0 0 0px rgba(124,58,237,0.2)",
+                "0 0 30px rgba(124,58,237,0.35)",
+                "0 0 0px rgba(124,58,237,0.2)",
+              ],
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+            }}
           />
-        ))}
 
-      {/* Button content */}
-      <div className="relative z-10 flex items-center justify-center space-x-2">
-        {!launched ? (
-          <>
-            {/* Idle: tilted rocket */}
-            <div>
-              <Rocket size={20} className="text-lime-400 " />
-            </div>
-            <span>Launch</span>
-          </>
-        ) : (
-          // Rocket launch animation
+          {/* Floating particles */}
+          {!launched &&
+            [...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                variants={particleVariants}
+                initial="initial"
+                animate="animate"
+                className="absolute h-1.5 w-1.5 rounded-full bg-white/70"
+                style={{
+                  left: "50%",
+                  top: "50%",
+                }}
+              />
+            ))}
+
+          {/* Content */}
+          <div className="relative z-10 flex items-center gap-2">
+            {!launched ? (
+              <>
+                <Rocket size={20} />
+
+                <span>Launch</span>
+              </>
+            ) : (
+              <motion.div
+                initial={{
+                  y: 0,
+                  opacity: 1,
+                  rotate: -45,
+                }}
+                animate={[
+                  {
+                    rotate: 0,
+                    y: 0,
+                    opacity: 1,
+                    transition: {
+                      duration: 0.2,
+                    },
+                  },
+                  {
+                    y: -200,
+                    opacity: 0,
+                    transition: {
+                      duration: 2.5,
+                    },
+                  },
+                ]}
+              >
+                <Rocket size={22} />
+              </motion.div>
+            )}
+          </div>
+
+          {/* Shine */}
           <motion.div
-            initial={{ y: 0, opacity: 1, scale: 1, rotate: -45 }}
-            animate={[
-              {
-                rotate: -45, // step 1: straighten
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                transition: { duration: 0.25, ease: "easeInOut" },
-              },
-              {
-                y: -200, // step 2: fly up
-                opacity: 0,
-                transition: { duration: 3, ease: "easeInOut" },
-              },
-            ]}
-          >
-            <Rocket size={24} className="text-lime-400" />
-          </motion.div>
-        )}
-      </div>
-
-      {/* Hover shine */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full"
-        whileHover={{ translateX: "200%" }}
-        transition={{ duration: 0.8 }}
-      />
-    </motion.button>
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+            whileHover={{
+              translateX: "200%",
+            }}
+            transition={{
+              duration: 0.9,
+            }}
+          />
+        </motion.button>
       ),
       code: `
 "use client";
@@ -366,8 +372,8 @@ export default function PrimaryPulseButton() {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           className="relative px-5 py-2.5 sm:px-8 sm:py-4 rounded-2xl font-semibold 
-             bg-white/5 backdrop-blur-xl border border-white/20 text-white 
-             shadow-[0_8px_32px_rgba(0,0,0,0.25)] overflow-hidden group
+             bg-[var(--surface)]/70 backdrop-blur-xl border border-white/10 text-white 
+             shadow-[0_12px_40px_rgba(124,58,237,0.12)] overflow-hidden group
              text-sm sm:text-base"
         >
           {/* Animated background gradient */}
@@ -488,7 +494,7 @@ export default function GlassTiltButton() {
   whileTap={{ scale: 0.97 }}
   className="relative px-5 py-2.5 sm:px-8 sm:py-4 rounded-2xl font-semibold 
              bg-white/5 backdrop-blur-xl border border-white/20 text-white 
-             shadow-[0_8px_32px_rgba(0,0,0,0.25)] overflow-hidden group
+             shadow-[0_12px_40px_rgba(124,58,237,0.12)] overflow-hidden group
              text-sm sm:text-base"
 >
   {/* Animated background gradient */}
@@ -608,19 +614,19 @@ export default function GlassTiltButton() {
         >
           {/* Animated border pieces */}
           <motion.div
-            className="absolute top-0 left-0 w-1/2 h-1/2 border-t-2 border-l-2 border-lime-400 rounded-tl-lg"
+            className="absolute top-0 left-0 w-1/2 h-1/2 border-t-2 border-l-2 border-[var(--primary)] rounded-tl-lg"
             animate={{ opacity: isHovered ? 0 : 0.8 }}
             transition={{ duration: 0.3 }}
           />
           <motion.div
-            className="absolute bottom-0 right-0 w-1/2 h-1/2 border-b-2 border-r-2 border-lime-400 rounded-br-lg"
+            className="absolute bottom-0 right-0 w-1/2 h-1/2 border-b-2 border-r-2 border-[var(--primary)] rounded-br-lg"
             animate={{ opacity: isHovered ? 0 : 0.8 }}
             transition={{ duration: 0.3 }}
           />
 
           {/* Full border on hover */}
           <motion.div
-            className="absolute inset-0 rounded-lg border-2 border-lime-400"
+            className="absolute inset-0 rounded-lg border-2border-[var(--primary)]"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{
               opacity: isHovered ? 1 : 0,
@@ -631,7 +637,7 @@ export default function GlassTiltButton() {
 
           {/* Ripple background */}
           <motion.div
-            className="absolute inset-0 rounded-lg bg-lime-400/10 -z-10"
+            className="absolute inset-0 rounded-lg bg-[var(--primary)]/10 -z-10"
             animate={{
               scale: [1, 1.05, 1],
               opacity: [0.1, 0.2, 0.1],
@@ -644,7 +650,7 @@ export default function GlassTiltButton() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.96 }}
             className="relative inline-flex items-center justify-center 
-                     gap-2 rounded-lg font-semibold text-lime-300 
+                     gap-2 rounded-lg font-semibold text-[var(--primary)] 
                      bg-neutral-900 overflow-hidden
                      px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base"
           >

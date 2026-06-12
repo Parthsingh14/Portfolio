@@ -1,22 +1,16 @@
-import {
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-} from "react-icons/fa6";
-
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa6";
 
 import CodeRev from "../assets/CodeRev.png";
 import Mindscribe from "../assets/Mindscribe.png";
 import QuickShop from "../assets/QuickShop.png";
 import TexttoEmoji from "../assets/TexttoEmoji.png";
-import RAGProject from "../assets/RAG.png"
-
-
+import RAGProject from "../assets/RAG.png";
 
 export const LINKS = [
-  { id: "home", name: "home" },
-  { id: "projects", name: "projects" },
-  { id: "about", name: "about" },
+  { id: "home", name: "Home" },
+  { id: "about", name: "About" },
+  { id: "projects", name: "Projects" },
+  { id: "experience", name: "Experience" },
   { id: "contact", name: "Contact" },
 ];
 
@@ -25,13 +19,14 @@ export const MARQUEE_TEXT =
 
 export const PROJECTS = [
   {
-  id: 1,
-  title: "Internal Knowledge Assistant (RAG)",
-  description:
-    "An enterprise-style RAG-based AI assistant that answers queries strictly from internal documents. Implements semantic chunking, Gemini embeddings, and Pinecone vector search with a grounded LLaMA model to deliver accurate, context-aware responses.",
-  imgSrc: RAGProject,
-  link: "https://company-internal-chat-bot.vercel.app/",
-},{
+    id: 1,
+    title: "Internal Knowledge Assistant (RAG)",
+    description:
+      "An enterprise-style RAG-based AI assistant that answers queries strictly from internal documents. Implements semantic chunking, Gemini embeddings, and Pinecone vector search with a grounded LLaMA model to deliver accurate, context-aware responses.",
+    imgSrc: RAGProject,
+    link: "https://company-internal-chat-bot.vercel.app/",
+  },
+  {
     id: 2,
     title: "MindScribe",
     description:
@@ -63,27 +58,40 @@ export const PROJECTS = [
     imgSrc: TexttoEmoji,
     link: "https://parthsingh14.github.io/Text-to-Emoji/",
   },
-
 ];
-
 
 export const SOCIAL_MEDIA_LINKS = [
   {
     href: "https://www.instagram.com/parth.sx?igsh=aGxvbDN6YmgwNGxm",
-    icon: <FaInstagram size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
+    icon: (
+      <FaInstagram
+        size={26}
+        className="transition duration-300 hover:text-[var(--primary)] hover:opacity-80"
+      />
+    ),
   },
   {
     href: "https://github.com/Parthsingh14",
-    icon: <FaGithub size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
+    icon: (
+      <FaGithub
+        size={26}
+        className="transition duration-300 hover:text-[var(--primary)] hover:opacity-80"
+      />
+    ),
   },
   {
     href: "https://www.linkedin.com/in/parth-singh-5797a424a",
-    icon: <FaLinkedin size={26} className="transition duration-300 hover:text-lime-300 hover:opacity-80" />,
+    icon: (
+      <FaLinkedin
+        size={26}
+        className="transition duration-300 hover:text-[var(--primary)] hover:opacity-80"
+      />
+    ),
   },
 ];
 
 export const CONTACT = {
-  text: "I am always excited to collaborate on new and challenging projects. Whether you have a specific project in mind or just want to explore potential opportunities, Id love to hear from you. Lets combine our skills and expertise to create something amazing. Feel free to reach out to discuss how we can work together to achieve your goals.",
+  text: "Interested in collaborating, building scalable products, or discussing AI and full-stack development? Feel free to reach out. I’m always open to meaningful conversations, exciting ideas, and opportunities to create impactful solutions.",
   email: "parthsingh503@gmail.com",
   phone: "+91-6394057423",
 };

@@ -1,12 +1,29 @@
-import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+} from "react";
+
+import {
+  motion,
+  AnimatePresence,
+} from "framer-motion";
+
 import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
   Zap,
   Palette,
+  LayoutGrid,
+  Navigation,
+  MousePointer2,
+  BadgeCheck,
+  UserCircle2,
+  AlertTriangle,
+  FileText,
 } from "lucide-react";
+
 import ButtonsUI from "./UI-components/ButtonsUI";
 import LoadersUI from "./UI-components/LoadersUI";
 import CardsUI from "./UI-components/CardsUI";
@@ -19,200 +36,329 @@ import AlertsUI from "./UI-components/AlertUI";
 
 function UIPlayground() {
   const uiTabs = [
-    { name: "Buttons", component: <ButtonsUI />, icon: <Zap size={16} /> },
-    { name: "Loaders", component: <LoadersUI />, icon: <Sparkles size={16} /> },
-    { name: "Cards", component: <CardsUI />, icon: <Palette size={16} /> },
-    { name: "Forms", component: <FormsUI />, icon: "📝" },
-    { name: "Navbar", component: <NavbarUI />, icon: "🧭" },
-    { name: "Hover Effects", component: <HoverUI />, icon: "✨" },
-    { name: "Badges", component: <BadgesUI />, icon: "🏷️" },
-    { name: "Avatars", component: <AvatarsUI />, icon: "👤" },
-    { name: "Alerts", component: <AlertsUI />, icon: "⚡" },
+    {
+      name: "Buttons",
+      component: <ButtonsUI />,
+      icon: <Zap size={16} />,
+    },
+
+    {
+      name: "Loaders",
+      component: <LoadersUI />,
+      icon: <Sparkles size={16} />,
+    },
+
+    {
+      name: "Cards",
+      component: <CardsUI />,
+      icon: <Palette size={16} />,
+    },
+
+    {
+      name: "Forms",
+      component: <FormsUI />,
+      icon: <FileText size={16} />,
+    },
+
+    {
+      name: "Navbar",
+      component: <NavbarUI />,
+      icon: <Navigation size={16} />,
+    },
+
+    {
+      name: "Hover Effects",
+      component: <HoverUI />,
+      icon: (
+        <MousePointer2 size={16} />
+      ),
+    },
+
+    {
+      name: "Badges",
+      component: <BadgesUI />,
+      icon: (
+        <BadgeCheck size={16} />
+      ),
+    },
+
+    {
+      name: "Avatars",
+      component: <AvatarsUI />,
+      icon: (
+        <UserCircle2 size={16} />
+      ),
+    },
+
+    {
+      name: "Alerts",
+      component: <AlertsUI />,
+      icon: (
+        <AlertTriangle size={16} />
+      ),
+    },
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const activeTab = uiTabs[activeIndex].name;
+  const [activeIndex, setActiveIndex] =
+    useState(0);
+
+  const activeTab =
+    uiTabs[activeIndex].name;
+
   const scrollRef = useRef(null);
   const tabRefs = useRef([]);
 
-  // Scroll + Change Tab
-  const handleArrowClick = (direction) => {
-    if (scrollRef.current) {
-      setIsScrolling(true);
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -200 : 200,
-        behavior: "smooth",
-      });
+  // Auto scroll active tab into view
+  useEffect(() => {
+    tabRefs.current[
+      activeIndex
+    ]?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  }, [activeIndex]);
 
-      // Reset scrolling state after animation completes
-      setTimeout(() => setIsScrolling(false), 500);
-    }
-
-    setActiveIndex((prevIndex) => {
+  const handleArrowClick = (
+    direction
+  ) => {
+    setActiveIndex((prev) => {
       if (direction === "left") {
-        return prevIndex > 0 ? prevIndex - 1 : prevIndex;
-      } else {
-        return prevIndex < uiTabs.length - 1 ? prevIndex + 1 : prevIndex;
+        return Math.max(prev - 1, 0);
       }
+
+      return Math.min(
+        prev + 1,
+        uiTabs.length - 1
+      );
     });
   };
 
-  // Handle scroll to update active index
-  const handleScroll = () => {
-    if (scrollRef.current && !isScrolling) {
-      const scrollPos = scrollRef.current.scrollLeft;
-      const tabWidth = 150; // Approximate tab width
-      const newIndex = Math.round(scrollPos / tabWidth);
-
-      if (
-        newIndex >= 0 &&
-        newIndex < uiTabs.length &&
-        newIndex !== activeIndex
-      ) {
-        setActiveIndex(newIndex);
-      }
-    }
-  };
-
   return (
-    <div className="flex flex-col items-center min-h-screen mt-10 lg:mt-15 px-4 py-8">
-      {/* Header with decorative elements */}
+    <div className="relative flex min-h-screen flex-col items-center overflow-hidden px-4 py-28">
+      {/* Ambient Glow */}
+      <div className="absolute left-[10%] top-[10%] h-72 w-72 rounded-full bg-[var(--primary)] opacity-[0.06] blur-3xl" />
+
+      <div className="absolute bottom-[10%] right-[10%] h-80 w-80 rounded-full bg-[var(--secondary)] opacity-[0.06] blur-3xl" />
+
+      {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-8 text-center"
+        initial={{
+          opacity: 0,
+          y: -20,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.5,
+        }}
+        className="relative z-10 mb-10 text-center"
       >
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-lime-400 to-emerald-400 bg-clip-text text-transparent">
+        <h1
+          className="text-4xl font-bold md:text-5xl"
+          style={{
+            background:
+              "linear-gradient(135deg, #7C3AED, #3B82F6)",
+            WebkitBackgroundClip:
+              "text",
+            WebkitTextFillColor:
+              "transparent",
+          }}
+        >
           UI Playground
         </h1>
-        <p className="text-gray-400 mt-2">Explore interactive UI components</p>
 
-        {/* Note Section */}
+        <p className="mt-3 text-sm text-[var(--text-secondary)] md:text-base">
+          Reusable Tailwind +
+          Framer Motion Components
+        </p>
+
+        {/* Note */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.7 }}
-          className="mt-4 p-3 rounded-xl border border-yellow-400 bg-yellow-100/20 text-yellow-300 text-sm md:text-base inline-block"
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          transition={{
+            delay: 0.4,
+          }}
+          className="mt-5 inline-flex max-w-2xl items-center gap-2 rounded-2xl border border-yellow-400/20 bg-yellow-400/10 px-5 py-3 text-sm text-yellow-200 backdrop-blur-md"
         >
-          ⚠️ <span className="font-semibold">Note:</span>
-          These UIs are built only with{" "}
-          <span className="text-emerald-400 font-medium">
-            TailwindCSS
-          </span> +{" "}
-          <span className="text-lime-400 font-medium">Framer Motion</span>.
-          Please install them first.
+          <AlertTriangle
+            size={16}
+          />
+
+          <span>
+            These components are
+            built using{" "}
+            <span className="font-medium text-[var(--secondary)]">
+              TailwindCSS
+            </span>{" "}
+            and{" "}
+            <span className="font-medium text-[var(--primary)]">
+              Framer Motion
+            </span>
+            .
+          </span>
         </motion.div>
       </motion.div>
 
-      {/* Tab Container */}
+      {/* Tabs */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4 }}
-        className="relative bg-neutral-900 w-full max-w-5xl h-auto min-h-12 lg:min-h-14 border border-neutral-800 rounded-2xl flex items-center shadow-xl shadow-black/30 mb-8"
+        initial={{
+          opacity: 0,
+          scale: 0.98,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+        }}
+        className="relative z-10 mb-8 flex w-full max-w-6xl items-center rounded-[2rem] border border-white/10 bg-white/5 p-3 backdrop-blur-xl"
       >
-        {/* Left Arrow with improved styling */}
+        {/* Left Arrow */}
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => handleArrowClick("left")}
-          disabled={activeIndex === 0}
-          className="absolute left-0 z-10 h-full px-3 bg-gradient-to-r from-neutral-900 via-neutral-900 to-transparent flex items-center"
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{
+            scale: 0.95,
+          }}
+          onClick={() =>
+            handleArrowClick(
+              "left"
+            )
+          }
+          disabled={
+            activeIndex === 0
+          }
+          className="mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[var(--text-primary)] disabled:opacity-40"
         >
-          <ChevronLeft
-            className={`${
-              activeIndex === 0 ? "text-neutral-600" : "text-white"
-            }`}
-          />
+          <ChevronLeft />
         </motion.button>
 
         {/* Scrollable Tabs */}
         <div
           ref={scrollRef}
-          onScroll={handleScroll}
-          className="flex overflow-x-auto scrollbar-hide w-full px-10 space-x-2"
+          className="scrollbar-hide flex flex-1 gap-3 overflow-x-auto"
         >
-          {uiTabs.map((tab, index) => (
-            <motion.div
-              key={tab.name + index}
-              ref={(el) => (tabRefs.current[index] = el)}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => {
-                setActiveIndex(index);
-                setIsScrolling(true);
-                setTimeout(() => setIsScrolling(false), 500);
-              }}
-              className={`flex items-center text-sm lg:text-base font-medium px-4 lg:px-5 py-2 lg:py-3 rounded-full cursor-pointer transition-all duration-300 whitespace-nowrap ${
-                activeIndex === index
-                  ? "bg-gradient-to-r from-lime-400 to-emerald-400 text-black shadow-lg shadow-lime-400/20"
-                  : "text-neutral-300 hover:bg-neutral-800 hover:text-white"
-              }`}
-            >
-              <span className="mr-2">{tab.icon}</span>
-              {tab.name}
-            </motion.div>
-          ))}
+          {uiTabs.map(
+            (tab, index) => (
+              <motion.button
+                key={tab.name}
+                ref={(el) =>
+                  (tabRefs.current[
+                    index
+                  ] = el)
+                }
+                whileHover={{
+                  y: -2,
+                }}
+                whileTap={{
+                  scale: 0.98,
+                }}
+                onClick={() =>
+                  setActiveIndex(
+                    index
+                  )
+                }
+                className={`flex shrink-0 items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all duration-300 ${
+                  activeIndex ===
+                  index
+                    ? "bg-[image:var(--gradient-primary)] text-white shadow-[0_10px_30px_rgba(124,58,237,0.25)]"
+                    : "border border-white/10 bg-white/5 text-[var(--text-secondary)] hover:bg-white/10 hover:text-[var(--text-primary)]"
+                }`}
+              >
+                {tab.icon}
+                {tab.name}
+              </motion.button>
+            )
+          )}
         </div>
 
-        {/* Right Arrow with improved styling */}
+        {/* Right Arrow */}
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => handleArrowClick("right")}
-          disabled={activeIndex === uiTabs.length - 1}
-          className="absolute right-0 z-10 h-full px-3 bg-gradient-to-l from-neutral-900 via-neutral-900 to-transparent flex items-center"
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{
+            scale: 0.95,
+          }}
+          onClick={() =>
+            handleArrowClick(
+              "right"
+            )
+          }
+          disabled={
+            activeIndex ===
+            uiTabs.length - 1
+          }
+          className="ml-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[var(--text-primary)] disabled:opacity-40"
         >
-          <ChevronRight
-            className={`${
-              activeIndex === uiTabs.length - 1
-                ? "text-neutral-600"
-                : "text-white"
-            }`}
-          />
+          <ChevronRight />
         </motion.button>
       </motion.div>
 
-      {/* Tab Content */}
-      <div className="w-full max-w-[100%] rounded-2xl overflow-hidden">
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-7xl">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 20, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.98 }}
-            transition={{
-              duration: 0.5,
-              ease: "easeOut",
+            initial={{
+              opacity: 0,
+              y: 20,
+              scale: 0.98,
             }}
-            className="w-full bg-neutral-900 border border-neutral-800 rounded-2xl p-6 shadow-xl shadow-black/30"
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+              y: -20,
+              scale: 0.98,
+            }}
+            transition={{
+              duration: 0.35,
+            }}
+            className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-            >
-              {uiTabs[activeIndex].component}
-            </motion.div>
+            {
+              uiTabs[
+                activeIndex
+              ].component
+            }
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Indicator dots for mobile */}
-      <div className="flex mt-6 space-x-2 md:hidden">
-        {uiTabs.map((_, index) => (
-          <motion.div
-            key={index}
-            onClick={() => setActiveIndex(index)}
-            className={`w-2 h-2 rounded-full cursor-pointer ${
-              activeIndex === index ? "bg-lime-400" : "bg-neutral-700"
-            }`}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          />
-        ))}
+      {/* Mobile indicators */}
+      <div className="mt-6 flex gap-2 md:hidden">
+        {uiTabs.map(
+          (_, index) => (
+            <motion.button
+              key={index}
+              onClick={() =>
+                setActiveIndex(
+                  index
+                )
+              }
+              whileTap={{
+                scale: 0.9,
+              }}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                activeIndex ===
+                index
+                  ? "w-8 bg-[var(--primary)]"
+                  : "w-2 bg-white/20"
+              }`}
+            />
+          )
+        )}
       </div>
     </div>
   );

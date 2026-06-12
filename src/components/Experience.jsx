@@ -1,152 +1,213 @@
-// components/Experience.jsx
 import { motion } from "framer-motion";
 import FloatingIcons from "./FloatingIcons";
 
 const experienceData = [
   {
-  id: 0,
-  role: "Associate System Engineer (Trainee)",
-  company: "IBM",
-  period: "May 2026 - Present",
-  description: [
-    "Currently undergoing structured training and evaluation as part of onboarding.",
-    "Building foundational knowledge in enterprise systems, software development practices, and internal tools.",
-    "Preparing for assessment to transition into a full-time engineering role."
-  ],
-  type: "fulltime",
-},
- {
-  id: 1,
-  role: "Frontend & Backend Developer (Internship)",
-  company: "Bytemasks",
-  period: "April 2025 - July 2025",
-  description: [
-    "Developed and optimized the UI for key projects: 'Monitor' (AI monitoring dashboard) and 'Safe AI' (multi-model AI chat platform) using Next.js and TypeScript.",
-    "Implemented new features such as Lab, Collaboration, Prompt Library, and enhanced dashboard components to improve user experience.",
-    "Contributed to backend development by creating and integrating REST API endpoints with Python FastAPI and PostgreSQL.",
-    "Worked on authentication, bookmarking, and sharing features, ensuring smooth API consumption on the frontend.",
-    "Collaborated with the team in an agile workflow, performing regular GitHub pushes, standups, and code reviews."
-  ],
-  type: "internship",
-},
-  {
-  id: 2,
-  role: "Full Stack Developer - Shrikart E-commerce",
-  company: "Freelance Project",
-  period: "May 2025",
-  description: [
-    "Developed Shrikart, a full-featured e-commerce platform for local artisans using MERN stack",
-    "Implemented CRUD operations for product management, user authentication, and order processing",
-    "Created admin dashboard with analytics for business owners to track sales and inventory",
-  ],
-  type: "freelance",
-},
-{
-  id: 3,
-  role: "Frontend Developer - Discovery Drift ",
-  company: "Freelance Project",
-  period: "Feb 2025",
-  description: [
-     "Developed a responsive portfolio website for a travel and service agency showcasing cars, hotel rooms, and curated experiences",
-    "Implemented engaging animations and smooth transitions for service galleries to enhance user interaction",
-    "Optimized layouts and design for mobile-first responsiveness, improving client’s online presence",
-  ],
-  type: "freelance",
-},
+    id: 0,
+    role: "Associate System Engineer (Trainee)",
+    company: "IBM",
+    period: "May 2026 - Present",
+    description: [
+      "Currently undergoing structured training and evaluation as part of onboarding.",
+      "Building foundational knowledge in enterprise systems, software development practices, and internal tools.",
+      "Preparing for assessment to transition into a full-time engineering role.",
+    ],
+  },
 
+  {
+    id: 1,
+    role: "Frontend & Backend Developer (Internship)",
+    company: "Bytemasks",
+    period: "April 2025 - July 2025",
+    description: [
+      "Developed and optimized UI for Monitor (AI monitoring dashboard) and Safe AI (multi-model AI platform) using Next.js and TypeScript.",
+      "Implemented features such as Lab, Collaboration, Prompt Library, and enhanced dashboard components.",
+      "Contributed to backend APIs using Python FastAPI and PostgreSQL.",
+      "Worked on authentication, bookmarking, and sharing systems.",
+      "Collaborated in agile workflow with GitHub, standups, and code reviews.",
+    ],
+  },
+
+  {
+    id: 2,
+    role: "Full Stack Developer - Shrikart E-commerce",
+    company: "Freelance Project",
+    period: "May 2025",
+    description: [
+      "Built a full-featured e-commerce platform using the MERN stack.",
+      "Implemented authentication, product management, and order workflows.",
+      "Created an admin dashboard for analytics and inventory tracking.",
+    ],
+  },
+
+  {
+    id: 3,
+    role: "Frontend Developer - Discovery Drift",
+    company: "Freelance Project",
+    period: "Feb 2025",
+    description: [
+      "Developed a responsive travel and service agency portfolio website.",
+      "Implemented animations and interactive service galleries.",
+      "Optimized layouts for mobile-first responsiveness.",
+    ],
+  },
 ];
 
 function Experience() {
   return (
     <div className="relative">
       <FloatingIcons />
-      <section id="experience" className="relative py-20">
-        <motion.pre
-          className="text-left ml-10 whitespace-pre-wrap mb-16"
+
+      <section
+        id="experience"
+        className="relative px-6 py-20 md:px-12"
+      >
+        {/* Heading */}
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
         >
-          <span className="text-white lg:text-2xl">const </span>
-          <span className="text-lime-300 text-xl md:text-5xl font-bold cursor-pointer transition duration-300 hover:text-lime-200 hover:drop-shadow-[0_0_6px_rgba(163,230,53,0.8)]">
-            Experience
+          <span className="text-[var(--text-secondary)] lg:text-2xl">
+            const{" "}
           </span>
-          <span className="text-white lg:text-2xl"> = () =&gt; {"{"} </span>
-        </motion.pre>
 
-        {/* Mobile Timeline */}
-        <div className="lg:hidden mx-auto max-w-md px-4">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-4 top-0 h-full w-1 bg-lime-300/30 -translate-x-1/2">
-              <motion.div 
-                className="h-full bg-lime-300 w-full"
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                transition={{ duration: 1 }}
-              />
-            </div>
+          <motion.span
+            whileHover={{ scale: 1.03 }}
+            className="cursor-pointer text-3xl font-bold md:text-5xl"
+            style={{
+              background:
+                "linear-gradient(135deg, #7C3AED, #3B82F6)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Experience
+          </motion.span>
 
-            {experienceData.map((exp, index) => (
-              <div key={exp.id} className="relative pl-12 mb-12">
-                {/* Timeline dot */}
-                <div className={`absolute left-4 top-6 -translate-x-1/2 w-4 h-4 rounded-full ${exp.company === 'IBM' ? 'bg-lime-300' : 'bg-gray-400'}`} />
-                
+          <span className="text-[var(--text-secondary)] lg:text-2xl">
+            {" "}
+            = () =&gt; {"{"}
+          </span>
+        </motion.div>
+
+        {/* Timeline */}
+        <div className="relative mx-auto max-w-6xl">
+          {/* Center Line */}
+          <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-white/10 lg:block">
+            <motion.div
+              className="h-full w-full bg-gradient-to-b from-[var(--primary)] to-[var(--secondary)]"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              transition={{ duration: 1 }}
+              style={{
+                transformOrigin: "top",
+              }}
+            />
+          </div>
+
+          <div className="space-y-12 lg:space-y-20">
+            {experienceData.map((exp, index) => {
+              const isIBM =
+                exp.company === "IBM";
+
+              return (
                 <motion.div
-                  className={`p-5 rounded-xl border ${exp.company === 'IBM' ? 'border-lime-300 bg-lime-300/10' : 'border-gray-600 bg-gray-800/50'} shadow-lg`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  key={exp.id}
+                  initial={{
+                    opacity: 0,
+                    x:
+                      index % 2 === 0
+                        ? -50
+                        : 50,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                  }}
                   viewport={{ once: true }}
+                  className={`relative flex ${
+                    index % 2 === 0
+                      ? "justify-start"
+                      : "justify-end"
+                  }`}
                 >
-                  <h3 className="text-lg font-bold text-lime-300">{exp.role}</h3>
-                  {exp.company && <p className="text-gray-400 text-sm">{exp.company}</p>}
-                  <p className="text-gray-300 mt-1 text-xs">{exp.period}</p>
-                  <p className="mt-2 text-gray-200 text-sm">{exp.description}</p>
+                  {/* Timeline Dot */}
+                  <div className="absolute left-1/2 top-8 hidden -translate-x-1/2 lg:block">
+                    <div
+                      className={`h-5 w-5 rounded-full border-4 ${
+                        isIBM
+                          ? "border-[var(--primary)] bg-[var(--secondary)]"
+                          : "border-white/20 bg-[var(--surface)]"
+                      }`}
+                    />
+                  </div>
+
+                  {/* Card */}
+                  <div
+                    className={`w-full rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-md transition duration-300 hover:border-[rgba(124,58,237,0.3)] hover:shadow-[0_16px_40px_rgba(124,58,237,0.18)] lg:w-[46%] ${
+                      isIBM
+                        ? "ring-1 ring-[rgba(124,58,237,0.2)]"
+                        : ""
+                    }`}
+                  >
+                    {/* Badge */}
+                    <div className="mb-4 flex flex-wrap items-center gap-3">
+                      <span
+                        className={`rounded-full px-3 py-1 text-xs font-medium ${
+                          isIBM
+                            ? "bg-[rgba(124,58,237,0.15)] text-[var(--primary)]"
+                            : "bg-white/10 text-[var(--text-secondary)]"
+                        }`}
+                      >
+                        {exp.company}
+                      </span>
+
+                      <span className="text-sm text-[var(--text-secondary)]">
+                        {exp.period}
+                      </span>
+                    </div>
+
+                    {/* Role */}
+                    <h3 className="mb-4 text-xl font-semibold text-[var(--text-primary)]">
+                      {exp.role}
+                    </h3>
+
+                    {/* Description */}
+                    <ul className="space-y-3 text-sm leading-7 text-[var(--text-secondary)] md:text-base">
+                      {exp.description.map(
+                        (point, i) => (
+                          <li
+                            key={i}
+                            className="flex gap-3"
+                          >
+                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--secondary)]" />
+                            <span>{point}</span>
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
                 </motion.div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
-        {/* Desktop Timeline */}
-        <div className="hidden lg:block mx-auto max-w-6xl px-8">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 top-0 h-full w-1 bg-lime-300/30 -translate-x-1/2">
-              <motion.div 
-                className="h-full bg-lime-300 w-full"
-                initial={{ scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                transition={{ duration: 1 }}
-              />
-            </div>
-
-            {experienceData.map((exp, index) => (
-              <div 
-                key={exp.id}
-                className={`relative mb-16 w-full ${index % 2 === 0 ? "pr-[52%]" : "pl-[52%]"}`}
-              >
-                {/* Timeline dot */}
-                <div className={`absolute top-6 -translate-y-1/2 w-6 h-6 rounded-full ${exp.company === 'IBM' ? 'bg-lime-300' : 'bg-gray-400'} ${index % 2 === 0 ? 'right-[calc(50%-14px)]' : 'left-[calc(50%-14px)]'}`} />
-                
-                <motion.div
-                  className={`p-6 rounded-xl border ${exp.company === 'IBM' ? 'border-lime-300 bg-lime-300/10' : 'border-gray-600 bg-gray-800/50'} shadow-lg relative ${index % 2 === 0 ? 'mr-8' : 'ml-8'}`}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-xl font-bold text-lime-300">{exp.role}</h3>
-                  {exp.company && <p className="text-gray-400">{exp.company}</p>}
-                  <p className="text-gray-300 mt-1 text-sm">{exp.period}</p>
-                  <p className="mt-3 text-gray-200">{exp.description}</p>
-                </motion.div>
-              </div>
-            ))}
-          </div>
+        {/* Closing Bracket */}
+        <div className="mt-16">
+          <span className="text-xl text-[var(--text-secondary)]">
+            {"}"}
+          </span>
         </div>
-
-         <motion.pre className="text-left ml-5 whitespace-pre-wrap mt-16">
-          <span className="text-white text-2xl">{"}"}</span>
-        </motion.pre>
       </section>
     </div>
   );

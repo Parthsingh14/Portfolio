@@ -11,13 +11,35 @@ import FloatingIcons from "./components/FloatingIcons";
 import Practise from "./components/Practise";
 import { AnimatePresence } from "framer-motion";
 import UIPlayground from "./components/UIPlayground";
-import { useState } from "react";
-import IntroLoader from "./components/IntroLoader"; 
+import { useState, useEffect } from "react";
+import IntroLoader from "./components/IntroLoader";
 import CustomCursor from "./components/CustomCursor";
+import Lenis from "lenis";
 
 function App() {
   const [isUIPlayground, setisUIPlayground] = useState(false);
   const [showLoader, setShowLoader] = useState(true); // ✅ always show on reload
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.6, // smoothness speed
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.5,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <BrowserRouter>
@@ -28,12 +50,13 @@ function App() {
           {showLoader ? (
             <IntroLoader onFinish={() => setShowLoader(false)} />
           ) : (
-            <main className="relative font-light text-white antialiased selection:bg-lime-300 selection:text-black">
+            <main className="relative font-light antialiased text-[var(--text-primary)] bg-[var(--background)] selection:bg-[var(--primary)] selection:text-white">
               <Navbar
                 isUIPlayground={isUIPlayground}
                 setisUIPlayground={setisUIPlayground}
               />
               <CustomCursor />
+
               <Routes>
                 <Route
                   path="/"
@@ -49,6 +72,7 @@ function App() {
                     </>
                   }
                 />
+
                 <Route
                   path="/ui-playground"
                   element={
@@ -57,6 +81,7 @@ function App() {
                     </div>
                   }
                 />
+
                 <Route
                   path="/practise"
                   element={
