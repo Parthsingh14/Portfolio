@@ -76,7 +76,7 @@ function App() {
                 <Route
                   path="/ui-playground"
                   element={
-                    <div className="relative z-50">
+                    <div className="relative z-0">
                       <UIPlayground />
                     </div>
                   }
