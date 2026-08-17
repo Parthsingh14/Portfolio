@@ -62,7 +62,7 @@ export const PROJECTS = [
 
 export const SOCIAL_MEDIA_LINKS = [
   {
-    href: "https://www.instagram.com/parth.sx?igsh=aGxvbDN6YmgwNGxm",
+    href: "https://www.instagram.com/de_parth_ed",
     icon: (
       <FaInstagram
         size={26}
